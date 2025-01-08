@@ -5,6 +5,7 @@ from services import (
     ISDSError,
     MessageOperationsService,
     MessageInfoService,
+    DataBoxSearchService,
 )
 
 
@@ -47,6 +48,12 @@ class ISDSClient:
             wsdl_dir=self.wsdl_dir,
         )
         self.message_info = MessageInfoService(
+            username=username,
+            password=password,
+            base_url=self.base_url,
+            wsdl_dir=self.wsdl_dir,
+        )
+        self.data_box_search = DataBoxSearchService(
             username=username,
             password=password,
             base_url=self.base_url,
@@ -108,3 +115,20 @@ class ISDSClient:
     def mark_message_as_downloaded(self, message_id: str) -> Dict[str, Any]:
         """Mark a message as downloaded/read."""
         return self.message_info.mark_message_as_downloaded(message_id)
+
+    # Data Box Search methods
+    def find_data_box(self, search_text: str, **kwargs) -> Dict[str, Any]:
+        """Find a data box by search text."""
+        return self.data_box_search.find_data_box(search_text, **kwargs)
+
+    def check_data_box(self, data_box_id: str) -> Dict[str, Any]:
+        """Check if a data box exists and get its status."""
+        return self.data_box_search.check_data_box(data_box_id)
+
+    def get_data_box_list(self, **kwargs) -> Dict[str, Any]:
+        """Get a list of data boxes based on criteria."""
+        return self.data_box_search.get_data_box_list(**kwargs)
+
+    def get_data_box_activity_status(self, data_box_id: str) -> Dict[str, Any]:
+        """Get activity status of a data box."""
+        return self.data_box_search.get_activity_status(data_box_id)
