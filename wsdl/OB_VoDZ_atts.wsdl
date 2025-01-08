@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--  *********************************************************************
+      WSDL pro sluzbu predavajici přílohy z ISDS do OB 
+      (nelze použít samostatně, pouze interně z AGW)
+
+      verze: 1.1
+      *********************************************************************                    
+
+ Seznam sluzeb: 
+ ==============
+  1. AttachmentInfo - vraci metadata přílohy VoDZ
+  2. AttachmentData - vrací obsah přílohy VoDZ
+   
+
+  ************************************************************************ -->
+<definitions name="ISDS_OB_ATTACHMENTS" targetNamespace="http://isds.czechpoint.cz/v20" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns="http://isds.czechpoint.cz/v20" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <types>
+        <xs:schema xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" elementFormDefault="qualified" targetNamespace="http://isds.czechpoint.cz/v20">
+            <xs:element name="AttachmentInfo">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="dmAttID" type="xs:string" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AttachmentInfoResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="dmFileDescr" type="xs:string"/>
+                        <xs:element name="dmMimeType" type="xs:string"/>
+                        <xs:element name="dmAttSize" type="xs:string"/>
+                        <xs:element name="dmStatus">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="dmStatusCode" type="xs:string" />
+                                    <xs:element name="dmStatusMessage" type="xs:string" />
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element name="AttachmentData">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="dmAttID" type="xs:string" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AttachmentDataResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="dmContent" xmime:expectedContentTypes="application/octet-stream" minOccurs="0" maxOccurs="1" nillable="true" type="xs:base64Binary" />
+                        <xs:element name="dmStatus">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="dmStatusCode" type="xs:string" />
+                                    <xs:element name="dmStatusMessage" type="xs:string" />
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </types>
+    <!-- ******************************************************************* -->
+    <message name="AttachmentDataRequest">
+        <part name="parameter" element="tns:AttachmentData" />
+    </message>
+    <message name="AttachmentDataResponse">
+        <part name="parameter" element="tns:AttachmentDataResponse" />
+    </message>
+
+    <message name="AttachmentInfoRequest">
+        <part name="parameter" element="tns:AttachmentInfo" />
+    </message>
+    <message name="AttachmentInfoResponse">
+        <part name="parameter" element="tns:AttachmentInfoResponse" />
+    </message>
+
+    <!-- ******************************************************************* -->
+    <portType name="OB_ATT_SoapServicesPort">
+        <operation name="AttachmentData">
+            <input message= "tns:AttachmentDataRequest" />
+            <output message="tns:AttachmentDataResponse" />
+        </operation>
+
+        <operation name="AttachmentInfo">
+            <input message="tns:AttachmentInfoRequest" />
+            <output message="tns:AttachmentInfoResponse" />
+        </operation>
+    </portType>
+
+
+    <!-- ******************************************************************* -->
+    <binding name="OB_ATT_SoapServicesBinding" type="tns:OB_ATT_SoapServicesPort">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+        <operation name="AttachmentData">
+            <soap:operation soapAction="" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+        </operation>
+
+        <operation name="AttachmentInfo">
+            <soap:operation soapAction="" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+        </operation>
+
+    </binding>
+    <!-- ******************************************************************* -->
+    <service name="OB_ATT_SoapServices">
+        <port name="OB_ATT_SoapServicesPort" binding="tns:OB_ATT_SoapServicesBinding">
+            <soap:address location="https://ws2.mojedatovaschranka.cz/DS/vodz" />
+        </port>
+    </service>
+</definitions>
