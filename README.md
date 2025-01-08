@@ -1,3 +1,6 @@
+> ⚠️ **Warning**: This library is currently in early development and should be considered unstable. The API may change without notice, and not all features are fully implemented or tested. Use at your own risk in production environments.
+
+
 # ISDS Python Client
 
 A Python client for interacting with the Czech Data Box Information System (ISDS).
