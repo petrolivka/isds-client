@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Optional, Any
+from typing import Any
 from zeep import Client, Settings, exceptions
 from zeep.transports import Transport
 import requests

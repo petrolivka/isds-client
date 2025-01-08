@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Optional, Dict, Any, List
+from typing import Dict, Any, List
 from .base import BaseService
 
 
