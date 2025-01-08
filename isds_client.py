@@ -6,6 +6,7 @@ from services import (
     MessageOperationsService,
     MessageInfoService,
     DataBoxSearchService,
+    DataBoxAccessService,
 )
 
 
@@ -54,6 +55,12 @@ class ISDSClient:
             wsdl_dir=self.wsdl_dir,
         )
         self.data_box_search = DataBoxSearchService(
+            username=username,
+            password=password,
+            base_url=self.base_url,
+            wsdl_dir=self.wsdl_dir,
+        )
+        self.data_box_access = DataBoxAccessService(
             username=username,
             password=password,
             base_url=self.base_url,
@@ -132,3 +139,20 @@ class ISDSClient:
     def get_data_box_activity_status(self, data_box_id: str) -> Dict[str, Any]:
         """Get activity status of a data box."""
         return self.data_box_search.get_activity_status(data_box_id)
+
+    # Data Box Access methods
+    def get_owner_info(self, login: str) -> Dict[str, Any]:
+        """Get information about a data box owner."""
+        return self.data_box_access.get_owner_info(login)
+
+    def get_user_info(self, login: str) -> Dict[str, Any]:
+        """Get information about a data box user."""
+        return self.data_box_access.get_user_info(login)
+
+    def change_password(self, old_password: str, new_password: str) -> Dict[str, Any]:
+        """Change ISDS password."""
+        return self.data_box_access.change_password(old_password, new_password)
+
+    def get_password_info(self) -> Dict[str, Any]:
+        """Get information about the current password."""
+        return self.data_box_access.get_password_info()
