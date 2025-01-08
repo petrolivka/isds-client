@@ -7,6 +7,7 @@ from services import (
     MessageInfoService,
     DataBoxSearchService,
     DataBoxAccessService,
+    DataBoxManipulationsService,
 )
 
 
@@ -61,6 +62,12 @@ class ISDSClient:
             wsdl_dir=self.wsdl_dir,
         )
         self.data_box_access = DataBoxAccessService(
+            username=username,
+            password=password,
+            base_url=self.base_url,
+            wsdl_dir=self.wsdl_dir,
+        )
+        self.data_box_manipulations = DataBoxManipulationsService(
             username=username,
             password=password,
             base_url=self.base_url,
@@ -156,3 +163,38 @@ class ISDSClient:
     def get_password_info(self) -> Dict[str, Any]:
         """Get information about the current password."""
         return self.data_box_access.get_password_info()
+
+    # Data Box Manipulation methods
+    def create_data_box(self, **kwargs) -> Dict[str, Any]:
+        """Create a new data box."""
+        return self.data_box_manipulations.create_data_box(**kwargs)
+
+    def delete_data_box(self, data_box_id: str) -> Dict[str, Any]:
+        """Delete a data box."""
+        return self.data_box_manipulations.delete_data_box(data_box_id)
+
+    def update_data_box_description(self, data_box_id: str, **kwargs) -> Dict[str, Any]:
+        """Update data box description."""
+        return self.data_box_manipulations.update_data_box_description(
+            data_box_id, **kwargs
+        )
+
+    def add_data_box_user(self, data_box_id: str, **kwargs) -> Dict[str, Any]:
+        """Add a user to a data box."""
+        return self.data_box_manipulations.add_data_box_user(data_box_id, **kwargs)
+
+    def delete_data_box_user(self, user_id: str) -> Dict[str, Any]:
+        """Delete a user from a data box."""
+        return self.data_box_manipulations.delete_data_box_user(user_id)
+
+    def update_data_box_user(self, user_id: str, **kwargs) -> Dict[str, Any]:
+        """Update data box user information."""
+        return self.data_box_manipulations.update_data_box_user(user_id, **kwargs)
+
+    def new_access_data(self, user_id: str) -> Dict[str, Any]:
+        """Generate new access data for a user."""
+        return self.data_box_manipulations.new_access_data(user_id)
+
+    def get_data_box_users(self, data_box_id: str) -> Dict[str, Any]:
+        """Get list of users for a data box."""
+        return self.data_box_manipulations.get_data_box_users2(data_box_id)
