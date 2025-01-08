@@ -88,10 +88,10 @@ class DataBoxAccessService(BaseService):
             "ChangeISDSPassword", dbOldPassword=old_password, dbNewPassword=new_password
         )
 
-    def get_password_info(self) -> Dict[str, Any]:
+    def get_password_info(self, dummy: str = "") -> Dict[str, Any]:
         """Get information about the current password.
 
         Returns:
             Password information (e.g., expiration date)
         """
-        return self._call("GetPasswordInfo")
+        return self._call("GetPasswordInfo", dbDummy=dummy)

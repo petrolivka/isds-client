@@ -12,6 +12,7 @@ def main():
     )
 
     print(client.message_info.verify_message("11678994"))
+    print(client.data_box_access.get_password_info())
 
 
 if __name__ == "__main__":
