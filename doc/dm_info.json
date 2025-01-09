@@ -1,0 +1,212 @@
+{
+    "dmInfoWebService": {
+        "dmInfoPortType": {
+            "operations": {
+                "VerifyMessage": {
+                    "input": {
+                        "dmID": {
+                            "optional": false,
+                            "type": "tIdDm(value)"
+                        }
+                    }
+                },
+                "MessageEnvelopeDownload": {
+                    "input": {
+                        "dmID": {
+                            "optional": false,
+                            "type": "tIdDm(value)"
+                        }
+                    }
+                },
+                "MarkMessageAsDownloaded": {
+                    "input": {
+                        "dmID": {
+                            "optional": false,
+                            "type": "tIdDm(value)"
+                        }
+                    }
+                },
+                "GetDeliveryInfo": {
+                    "input": {
+                        "dmID": {
+                            "optional": false,
+                            "type": "tIdDm(value)"
+                        }
+                    }
+                },
+                "GetSignedDeliveryInfo": {
+                    "input": {
+                        "dmID": {
+                            "optional": false,
+                            "type": "tIdDm(value)"
+                        }
+                    }
+                },
+                "GetListOfSentMessages": {
+                    "input": {
+                        "dmFromTime": {
+                            "optional": false,
+                            "type": "DateTime(value)"
+                        },
+                        "dmToTime": {
+                            "optional": false,
+                            "type": "DateTime(value)"
+                        },
+                        "dmSenderOrgUnitNum": {
+                            "optional": false,
+                            "type": "Integer(value)"
+                        },
+                        "dmStatusFilter": {
+                            "optional": false,
+                            "type": "String(value)"
+                        },
+                        "dmOffset": {
+                            "optional": false,
+                            "type": "Integer(value)"
+                        },
+                        "dmLimit": {
+                            "optional": false,
+                            "type": "Integer(value)"
+                        }
+                    }
+                },
+                "GetListOfReceivedMessages": {
+                    "input": {
+                        "dmFromTime": {
+                            "optional": false,
+                            "type": "DateTime(value)"
+                        },
+                        "dmToTime": {
+                            "optional": false,
+                            "type": "DateTime(value)"
+                        },
+                        "dmRecipientOrgUnitNum": {
+                            "optional": false,
+                            "type": "Integer(value)"
+                        },
+                        "dmStatusFilter": {
+                            "optional": false,
+                            "type": "String(value)"
+                        },
+                        "dmOffset": {
+                            "optional": false,
+                            "type": "Integer(value)"
+                        },
+                        "dmLimit": {
+                            "optional": false,
+                            "type": "Integer(value)"
+                        }
+                    }
+                },
+                "GetMessageStateChanges": {
+                    "input": {
+                        "dmFromTime": {
+                            "optional": false,
+                            "type": "DateTime(value)"
+                        },
+                        "dmToTime": {
+                            "optional": false,
+                            "type": "DateTime(value)"
+                        }
+                    }
+                },
+                "GetMessageAuthor": {
+                    "input": {
+                        "dmID": {
+                            "optional": false,
+                            "type": "tIdDm(value)"
+                        }
+                    }
+                },
+                "GetMessageAuthor2": {
+                    "input": {
+                        "dmID": {
+                            "optional": false,
+                            "type": "tIdDm(value)"
+                        }
+                    }
+                },
+                "EraseMessage": {
+                    "input": {
+                        "dmID": {
+                            "optional": false,
+                            "type": "tIdDm(value)"
+                        },
+                        "dmIncoming": {
+                            "optional": false,
+                            "type": "Boolean(value)"
+                        }
+                    }
+                },
+                "GetListOfErasedMessages": {
+                    "input": {
+                        "dmFromDate": {
+                            "optional": false,
+                            "type": "Date(value)"
+                        },
+                        "dmToDate": {
+                            "optional": false,
+                            "type": "Date(value)"
+                        },
+                        "dmYear": {
+                            "optional": false,
+                            "type": "PositiveInteger(value)"
+                        },
+                        "dmMonth": {
+                            "optional": true,
+                            "type": "PositiveInteger(value)"
+                        },
+                        "dmMessageType": {
+                            "optional": false,
+                            "type": "dmMessageType(value)"
+                        },
+                        "dmOutFormat": {
+                            "optional": false,
+                            "type": "dmOutFormat(value)"
+                        }
+                    }
+                },
+                "PickUpAsyncResponse": {
+                    "input": {
+                        "asyncID": {
+                            "optional": false,
+                            "type": "String(value)"
+                        },
+                        "asyncReqType": {
+                            "optional": false,
+                            "type": "String(value)"
+                        }
+                    }
+                },
+                "GetListForNotifications": {
+                    "input": {
+                        "ntfFromTime": {
+                            "optional": false,
+                            "type": "DateTime(value)"
+                        },
+                        "ntfScope": {
+                            "optional": false,
+                            "type": "String(value)"
+                        }
+                    }
+                },
+                "RegisterForNotifications": {
+                    "input": {
+                        "action": {
+                            "optional": false,
+                            "type": "Integer(value)"
+                        }
+                    }
+                },
+                "SentMessageEnvelopeDownload": {
+                    "input": {
+                        "dmID": {
+                            "optional": false,
+                            "type": "tIdDm(value)"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

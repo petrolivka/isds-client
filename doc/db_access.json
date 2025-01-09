@@ -1,0 +1,60 @@
+{
+    "DataBoxAccess": {
+        "DataBoxAccessPortType": {
+            "operations": {
+                "GetOwnerInfoFromLogin": {
+                    "input": {
+                        "dbDummy": {
+                            "optional": false,
+                            "type": "String(value)"
+                        }
+                    }
+                },
+                "GetOwnerInfoFromLogin2": {
+                    "input": {
+                        "dbDummy": {
+                            "optional": false,
+                            "type": "String(value)"
+                        }
+                    }
+                },
+                "GetUserInfoFromLogin": {
+                    "input": {
+                        "dbDummy": {
+                            "optional": false,
+                            "type": "String(value)"
+                        }
+                    }
+                },
+                "GetUserInfoFromLogin2": {
+                    "input": {
+                        "dbDummy": {
+                            "optional": false,
+                            "type": "String(value)"
+                        }
+                    }
+                },
+                "ChangeISDSPassword": {
+                    "input": {
+                        "dbOldPassword": {
+                            "optional": false,
+                            "type": "String(value)"
+                        },
+                        "dbNewPassword": {
+                            "optional": false,
+                            "type": "String(value)"
+                        }
+                    }
+                },
+                "GetPasswordInfo": {
+                    "input": {
+                        "dbDummy": {
+                            "optional": false,
+                            "type": "String(value)"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

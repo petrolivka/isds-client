@@ -1,0 +1,295 @@
+{
+    "dmOperationsWebService": {
+        "dmOperationsPortType": {
+            "operations": {
+                "CreateMessage": {
+                    "input": {
+                        "dmEnvelope": {
+                            "optional": false,
+                            "type": {
+                                "dmSenderOrgUnit": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "dmSenderOrgUnitNum": {
+                                    "optional": false,
+                                    "type": "Integer(value)"
+                                },
+                                "dbIDRecipient": {
+                                    "optional": false,
+                                    "type": "tIdDb(value)"
+                                },
+                                "dmRecipientOrgUnit": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "dmRecipientOrgUnitNum": {
+                                    "optional": false,
+                                    "type": "Integer(value)"
+                                },
+                                "dmToHands": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "dmAnnotation": {
+                                    "optional": false,
+                                    "type": "dmAnnotation(value)"
+                                },
+                                "dmRecipientRefNumber": {
+                                    "optional": false,
+                                    "type": "dmRecipientRefNumber(value)"
+                                },
+                                "dmSenderRefNumber": {
+                                    "optional": false,
+                                    "type": "dmSenderRefNumber(value)"
+                                },
+                                "dmRecipientIdent": {
+                                    "optional": false,
+                                    "type": "dmRecipientIdent(value)"
+                                },
+                                "dmSenderIdent": {
+                                    "optional": false,
+                                    "type": "dmSenderIdent(value)"
+                                },
+                                "dmLegalTitleLaw": {
+                                    "optional": false,
+                                    "type": "Integer(value)"
+                                },
+                                "dmLegalTitleYear": {
+                                    "optional": false,
+                                    "type": "Integer(value)"
+                                },
+                                "dmLegalTitleSect": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "dmLegalTitlePar": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "dmLegalTitlePoint": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "dmPersonalDelivery": {
+                                    "optional": false,
+                                    "type": "Boolean(value)"
+                                },
+                                "dmAllowSubstDelivery": {
+                                    "optional": false,
+                                    "type": "Boolean(value)"
+                                },
+                                "dmOVM": {
+                                    "optional": true,
+                                    "type": "Boolean(value)"
+                                },
+                                "dmPublishOwnID": {
+                                    "optional": true,
+                                    "type": {
+                                        "_value_1": {
+                                            "optional": false,
+                                            "type": "Boolean(value)"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "dmFiles": {
+                            "optional": false,
+                            "type": {
+                                "dmFile": {
+                                    "optional": false,
+                                    "type": {
+                                        "dmEncodedContent": {
+                                            "optional": true,
+                                            "type": "Base64Binary(value)"
+                                        },
+                                        "dmXMLContent": {
+                                            "optional": true,
+                                            "type": {
+                                                "_value_1": {
+                                                    "optional": false,
+                                                    "type": "<zeep.xsd.types.any.AnyType object at 0x102da5cd0>"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "MessageDownload": {
+                    "input": {
+                        "dmID": {
+                            "optional": false,
+                            "type": "tIdDm(value)"
+                        }
+                    }
+                },
+                "SignedMessageDownload": {
+                    "input": {
+                        "dmID": {
+                            "optional": false,
+                            "type": "tIdDm(value)"
+                        }
+                    }
+                },
+                "SignedSentMessageDownload": {
+                    "input": {
+                        "dmID": {
+                            "optional": false,
+                            "type": "tIdDm(value)"
+                        }
+                    }
+                },
+                "DummyOperation": {
+                    "input": "String(value)"
+                },
+                "CreateMultipleMessage": {
+                    "input": {
+                        "dmRecipients": {
+                            "optional": false,
+                            "type": {
+                                "dmRecipient": {
+                                    "optional": false,
+                                    "type": {
+                                        "dbIDRecipient": {
+                                            "optional": false,
+                                            "type": "tIdDb(value)"
+                                        },
+                                        "dmRecipientOrgUnit": {
+                                            "optional": true,
+                                            "type": "String(value)"
+                                        },
+                                        "dmRecipientOrgUnitNum": {
+                                            "optional": true,
+                                            "type": "Integer(value)"
+                                        },
+                                        "dmToHands": {
+                                            "optional": false,
+                                            "type": "String(value)"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "dmEnvelope": {
+                            "optional": false,
+                            "type": {
+                                "dmSenderOrgUnit": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "dmSenderOrgUnitNum": {
+                                    "optional": false,
+                                    "type": "Integer(value)"
+                                },
+                                "dmAnnotation": {
+                                    "optional": false,
+                                    "type": "dmAnnotation(value)"
+                                },
+                                "dmRecipientRefNumber": {
+                                    "optional": false,
+                                    "type": "dmRecipientRefNumber(value)"
+                                },
+                                "dmSenderRefNumber": {
+                                    "optional": false,
+                                    "type": "dmSenderRefNumber(value)"
+                                },
+                                "dmRecipientIdent": {
+                                    "optional": false,
+                                    "type": "dmRecipientIdent(value)"
+                                },
+                                "dmSenderIdent": {
+                                    "optional": false,
+                                    "type": "dmSenderIdent(value)"
+                                },
+                                "dmLegalTitleLaw": {
+                                    "optional": false,
+                                    "type": "Integer(value)"
+                                },
+                                "dmLegalTitleYear": {
+                                    "optional": false,
+                                    "type": "Integer(value)"
+                                },
+                                "dmLegalTitleSect": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "dmLegalTitlePar": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "dmLegalTitlePoint": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "dmPersonalDelivery": {
+                                    "optional": false,
+                                    "type": "Boolean(value)"
+                                },
+                                "dmAllowSubstDelivery": {
+                                    "optional": false,
+                                    "type": "Boolean(value)"
+                                },
+                                "dmOVM": {
+                                    "optional": true,
+                                    "type": "Boolean(value)"
+                                },
+                                "dmPublishOwnID": {
+                                    "optional": true,
+                                    "type": {
+                                        "_value_1": {
+                                            "optional": false,
+                                            "type": "Boolean(value)"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "dmFiles": {
+                            "optional": false,
+                            "type": {
+                                "dmFile": {
+                                    "optional": false,
+                                    "type": {
+                                        "dmEncodedContent": {
+                                            "optional": true,
+                                            "type": "Base64Binary(value)"
+                                        },
+                                        "dmXMLContent": {
+                                            "optional": true,
+                                            "type": {
+                                                "_value_1": {
+                                                    "optional": false,
+                                                    "type": "<zeep.xsd.types.any.AnyType object at 0x102da5cd0>"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "AuthenticateMessage": {
+                    "input": {
+                        "dmMessage": {
+                            "optional": false,
+                            "type": "Base64Binary(value)"
+                        }
+                    }
+                },
+                "Re-signISDSDocument": {
+                    "input": {
+                        "dmDoc": {
+                            "optional": false,
+                            "type": "Base64Binary(value)"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,177 @@
+{
+    "dmVoDZWebService": {
+        "dmVoDZPortType": {
+            "operations": {
+                "UploadAttachment": {
+                    "input": {
+                        "dmFile": {
+                            "optional": false,
+                            "type": {
+                                "dmEncodedContent": {
+                                    "optional": false,
+                                    "type": "Base64Binary(value)"
+                                }
+                            }
+                        }
+                    }
+                },
+                "DownloadAttachment": {
+                    "input": {
+                        "dmID": {
+                            "optional": false,
+                            "type": "String(value)"
+                        },
+                        "attNum": {
+                            "optional": false,
+                            "type": "Integer(value)"
+                        }
+                    }
+                },
+                "CreateBigMessage": {
+                    "input": {
+                        "dmEnvelope": {
+                            "optional": false,
+                            "type": {
+                                "dmSenderOrgUnit": {
+                                    "optional": true,
+                                    "type": "String(value)"
+                                },
+                                "dmSenderOrgUnitNum": {
+                                    "optional": true,
+                                    "type": "Integer(value)"
+                                },
+                                "dbIDRecipient": {
+                                    "optional": false,
+                                    "type": "tIdDb(value)"
+                                },
+                                "dmRecipientOrgUnit": {
+                                    "optional": true,
+                                    "type": "String(value)"
+                                },
+                                "dmRecipientOrgUnitNum": {
+                                    "optional": true,
+                                    "type": "Integer(value)"
+                                },
+                                "dmToHands": {
+                                    "optional": true,
+                                    "type": "String(value)"
+                                },
+                                "dmAnnotation": {
+                                    "optional": false,
+                                    "type": "dmAnnotation(value)"
+                                },
+                                "dmRecipientRefNumber": {
+                                    "optional": true,
+                                    "type": "dmRecipientRefNumber(value)"
+                                },
+                                "dmSenderRefNumber": {
+                                    "optional": true,
+                                    "type": "dmSenderRefNumber(value)"
+                                },
+                                "dmRecipientIdent": {
+                                    "optional": true,
+                                    "type": "dmRecipientIdent(value)"
+                                },
+                                "dmSenderIdent": {
+                                    "optional": true,
+                                    "type": "dmSenderIdent(value)"
+                                },
+                                "dmLegalTitleLaw": {
+                                    "optional": true,
+                                    "type": "Integer(value)"
+                                },
+                                "dmLegalTitleYear": {
+                                    "optional": true,
+                                    "type": "Integer(value)"
+                                },
+                                "dmLegalTitleSect": {
+                                    "optional": true,
+                                    "type": "String(value)"
+                                },
+                                "dmLegalTitlePar": {
+                                    "optional": true,
+                                    "type": "String(value)"
+                                },
+                                "dmLegalTitlePoint": {
+                                    "optional": true,
+                                    "type": "String(value)"
+                                },
+                                "dmPersonalDelivery": {
+                                    "optional": true,
+                                    "type": "Boolean(value)"
+                                },
+                                "dmAllowSubstDelivery": {
+                                    "optional": true,
+                                    "type": "Boolean(value)"
+                                },
+                                "dmOVM": {
+                                    "optional": true,
+                                    "type": "Boolean(value)"
+                                },
+                                "dmPublishOwnID": {
+                                    "optional": true,
+                                    "type": {
+                                        "_value_1": {
+                                            "optional": false,
+                                            "type": "Boolean(value)"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "dmFiles": {
+                            "optional": false,
+                            "type": {
+                                "dmExtFile": {
+                                    "optional": false,
+                                    "type": {}
+                                },
+                                "dmFile": {
+                                    "optional": true,
+                                    "type": {
+                                        "dmEncodedContent": {
+                                            "optional": false,
+                                            "type": "Base64Binary(value)"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "AuthenticateBigMessage": {
+                    "input": {
+                        "dmMessage": {
+                            "optional": false,
+                            "type": "Base64Binary(value)"
+                        }
+                    }
+                },
+                "SignedBigMessageDownload": {
+                    "input": {
+                        "dmID": {
+                            "optional": false,
+                            "type": "tIdDm(value)"
+                        }
+                    }
+                },
+                "SignedSentBigMessageDownload": {
+                    "input": {
+                        "dmID": {
+                            "optional": false,
+                            "type": "tIdDm(value)"
+                        }
+                    }
+                },
+                "BigMessageDownload": {
+                    "input": {
+                        "dmID": {
+                            "optional": false,
+                            "type": "tIdDm(value)"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

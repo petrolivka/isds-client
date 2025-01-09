@@ -1,0 +1,463 @@
+{
+    "DataBoxSearch": {
+        "DataBoxSearchPortType": {
+            "operations": {
+                "FindDataBox": {
+                    "input": {
+                        "dbOwnerInfo": {
+                            "optional": false,
+                            "type": {
+                                "dbID": {
+                                    "optional": false,
+                                    "type": "tIdDb(value)"
+                                },
+                                "dbType": {
+                                    "optional": false,
+                                    "type": "tDbType(value)"
+                                },
+                                "ic": {
+                                    "optional": false,
+                                    "type": "tIdentificationNumber(value)"
+                                },
+                                "pnFirstName": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "pnMiddleName": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "pnLastName": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "pnLastNameAtBirth": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "firmName": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "biDate": {
+                                    "optional": false,
+                                    "type": "Date(value)"
+                                },
+                                "biCity": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "biCounty": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "biState": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "adCity": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "adStreet": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "adNumberInStreet": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "adNumberInMunicipality": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "adZipCode": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "adState": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "nationality": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "email": {
+                                    "optional": true,
+                                    "type": "String(value)"
+                                },
+                                "telNumber": {
+                                    "optional": true,
+                                    "type": "String(value)"
+                                },
+                                "identifier": {
+                                    "optional": false,
+                                    "type": "identifier(value)"
+                                },
+                                "registryCode": {
+                                    "optional": false,
+                                    "type": "registryCode(value)"
+                                },
+                                "dbState": {
+                                    "optional": false,
+                                    "type": "Integer(value)"
+                                },
+                                "dbEffectiveOVM": {
+                                    "optional": false,
+                                    "type": "Boolean(value)"
+                                },
+                                "dbOpenAddressing": {
+                                    "optional": false,
+                                    "type": "Boolean(value)"
+                                }
+                            }
+                        }
+                    }
+                },
+                "FindDataBox2": {
+                    "input": {
+                        "dbOwnerInfo": {
+                            "optional": false,
+                            "type": {
+                                "dbID": {
+                                    "optional": false,
+                                    "type": "tIdDb(value)"
+                                },
+                                "aifoIsds": {
+                                    "optional": true,
+                                    "type": "Boolean(value)"
+                                },
+                                "dbType": {
+                                    "optional": false,
+                                    "type": "tDbType(value)"
+                                },
+                                "ic": {
+                                    "optional": false,
+                                    "type": "tIdentificationNumber(value)"
+                                },
+                                "pnGivenNames": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "pnLastName": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "firmName": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "biDate": {
+                                    "optional": false,
+                                    "type": "Date(value)"
+                                },
+                                "biCity": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "biCounty": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "biState": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "adCode": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "adCity": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "adDistrict": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "adStreet": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "adNumberInStreet": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "adNumberInMunicipality": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "adZipCode": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "adState": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "nationality": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "dbIdOVM": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "dbState": {
+                                    "optional": false,
+                                    "type": "Integer(value)"
+                                },
+                                "dbOpenAddressing": {
+                                    "optional": false,
+                                    "type": "Boolean(value)"
+                                },
+                                "dbUpperID": {
+                                    "optional": false,
+                                    "type": "tIdDb(value)"
+                                }
+                            }
+                        }
+                    }
+                },
+                "CheckDataBox": {
+                    "input": {
+                        "dbID": {
+                            "optional": false,
+                            "type": "tIdDb(value)"
+                        },
+                        "dbApproved": {
+                            "optional": true,
+                            "type": "Boolean(value)"
+                        },
+                        "dbExternRefNumber": {
+                            "optional": true,
+                            "type": "String(value)"
+                        }
+                    }
+                },
+                "GetDataBoxList": {
+                    "input": {
+                        "dblType": {
+                            "optional": false,
+                            "type": "String(value)"
+                        }
+                    }
+                },
+                "PDZInfo": {
+                    "input": {
+                        "PDZSender": {
+                            "optional": false,
+                            "type": "tIdDb(value)"
+                        }
+                    }
+                },
+                "DataBoxCreditInfo": {
+                    "input": {
+                        "dbID": {
+                            "optional": false,
+                            "type": "tIdDb(value)"
+                        },
+                        "ciFromDate": {
+                            "optional": false,
+                            "type": "Date(value)"
+                        },
+                        "ciTodate": {
+                            "optional": false,
+                            "type": "Date(value)"
+                        }
+                    }
+                },
+                "ISDSSearch2": {
+                    "input": {
+                        "searchText": {
+                            "optional": false,
+                            "type": "String(value)"
+                        },
+                        "searchType": {
+                            "optional": false,
+                            "type": "searchType(value)"
+                        },
+                        "searchScope": {
+                            "optional": false,
+                            "type": "searchScope(value)"
+                        },
+                        "page": {
+                            "optional": false,
+                            "type": "Integer(value)"
+                        },
+                        "pageSize": {
+                            "optional": false,
+                            "type": "Integer(value)"
+                        },
+                        "highlighting": {
+                            "optional": true,
+                            "type": "Boolean(value)"
+                        }
+                    }
+                },
+                "ISDSSearch3": {
+                    "input": {
+                        "searchText": {
+                            "optional": false,
+                            "type": "String(value)"
+                        },
+                        "searchType": {
+                            "optional": false,
+                            "type": "searchType(value)"
+                        },
+                        "searchScope": {
+                            "optional": false,
+                            "type": "searchScope(value)"
+                        },
+                        "page": {
+                            "optional": false,
+                            "type": "Integer(value)"
+                        },
+                        "pageSize": {
+                            "optional": false,
+                            "type": "Integer(value)"
+                        },
+                        "highlighting": {
+                            "optional": true,
+                            "type": "Boolean(value)"
+                        }
+                    }
+                },
+                "GetDataBoxActivityStatus": {
+                    "input": {
+                        "dbID": {
+                            "optional": false,
+                            "type": "tIdDb(value)"
+                        },
+                        "baFrom": {
+                            "optional": false,
+                            "type": "DateTime(value)"
+                        },
+                        "baTo": {
+                            "optional": false,
+                            "type": "DateTime(value)"
+                        }
+                    }
+                },
+                "FindPersonalDataBox": {
+                    "input": {
+                        "dbOwnerInfo": {
+                            "optional": false,
+                            "type": {
+                                "dbID": {
+                                    "optional": false,
+                                    "type": "tIdDb(value)"
+                                },
+                                "aifoIsds": {
+                                    "optional": false,
+                                    "type": "Boolean(value)"
+                                },
+                                "pnFirstName": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "pnMiddleName": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "pnLastName": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "biDate": {
+                                    "optional": false,
+                                    "type": "Date(value)"
+                                },
+                                "biCity": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "biCounty": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "biState": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "adCode": {
+                                    "optional": false,
+                                    "type": "Integer(value)"
+                                },
+                                "adCity": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "adDistrict": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "adStreet": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "adNumberInStreet": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "adNumberInMunicipality": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "adZipCode": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "adState": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                },
+                                "nationality": {
+                                    "optional": false,
+                                    "type": "String(value)"
+                                }
+                            }
+                        }
+                    }
+                },
+                "DTInfo": {
+                    "input": {
+                        "dbId": {
+                            "optional": false,
+                            "type": "tIdDb(value)"
+                        }
+                    }
+                },
+                "PDZSendInfo": {
+                    "input": {
+                        "dbId": {
+                            "optional": false,
+                            "type": "tIdDb(value)"
+                        },
+                        "PDZType": {
+                            "optional": false,
+                            "type": "PDZType(value)"
+                        }
+                    }
+                },
+                "GetConstants": {
+                    "input": {
+                        "constDate": {
+                            "optional": false,
+                            "type": "Date(value)"
+                        }
+                    }
+                },
+                "GetDataBoxAddress": {
+                    "input": {
+                        "dbID": {
+                            "optional": false,
+                            "type": "tIdDb(value)"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
