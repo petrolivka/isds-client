@@ -5,6 +5,7 @@ description = "Package for interacting with ISDS API"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "pydantic>=2.10.4",
     "python-dateutil>=2.9.0.post0",
     "python-dotenv>=1.0.1",
     "zeep==4.3.1",

@@ -4,6 +4,7 @@ from zeep import Client, Settings, exceptions
 from zeep.transports import Transport
 import requests
 import base64
+from zeep.helpers import serialize_object
 
 
 class ISDSError(Exception):
@@ -93,7 +94,7 @@ class BaseService:
             if response is None:
                 raise ISDSError(f"No response received from {operation_name}")
 
-            return response
+            return serialize_object(response)
         except exceptions.Fault as e:
             fault_detail = getattr(e, "detail", None)
             if fault_detail:

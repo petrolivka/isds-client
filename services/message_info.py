@@ -1,7 +1,10 @@
 from pathlib import Path
 from typing import Optional, Dict, Any
 from datetime import datetime
+
+from schemas.messages import GetReceivedMessagesResponse
 from .base import BaseService
+from zeep.helpers import serialize_object
 
 
 class MessageInfoService(BaseService):
@@ -114,7 +117,7 @@ class MessageInfoService(BaseService):
         from_time: Optional[datetime] = None,
         to_time: Optional[datetime] = None,
         **kwargs,
-    ) -> Dict[str, Any]:
+    ) -> GetReceivedMessagesResponse:
         """Get list of received messages.
 
         Args:
@@ -131,7 +134,9 @@ class MessageInfoService(BaseService):
             "dmStatusFilter": -1,  # all statuses (just for testing)
             **kwargs,
         }
-        return self._call("GetListOfReceivedMessages", **params)
+        return GetReceivedMessagesResponse.model_validate(
+            self._call("GetListOfReceivedMessages", **params)
+        )
 
     def get_message_state_changes(self, message_id: str) -> Dict[str, Any]:
         """Get state changes for a message.
