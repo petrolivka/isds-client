@@ -8,6 +8,7 @@ import base64
 class MessageStatus(IntEnum):
     """Message status enumeration."""
 
+    ALL = -1
     CREATED = 1
     DELIVERED = 2
     DELIVERED_BY_FICTION = 3

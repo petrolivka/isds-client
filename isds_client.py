@@ -1,7 +1,11 @@
 from pathlib import Path
 from typing import Optional, Dict, Any
 from datetime import datetime
-from schemas.messages import GetReceivedMessagesResponse, VerifyMessageResponse
+from schemas.messages import (
+    GetReceivedMessagesResponse,
+    MessageStatus,
+    VerifyMessageResponse,
+)
 from services import (
     MessageOperationsService,
     MessageInfoService,
@@ -105,22 +109,30 @@ class ISDSClient:
         self,
         from_time: Optional[datetime] = None,
         to_time: Optional[datetime] = None,
+        status_filter: Optional[MessageStatus] = MessageStatus.ALL,
         **kwargs,
     ) -> Dict[str, Any]:
         """Get list of sent messages."""
         return self._message_info.get_sent_messages(
-            from_time=from_time, to_time=to_time, **kwargs
+            from_time=from_time,
+            to_time=to_time,
+            status_filter=status_filter,
+            **kwargs,
         )
 
     def get_received_messages(
         self,
         from_time: Optional[datetime] = None,
         to_time: Optional[datetime] = None,
+        status_filter: Optional[MessageStatus] = MessageStatus.ALL,
         **kwargs,
     ) -> GetReceivedMessagesResponse:
         """Get list of received messages."""
         return self._message_info.get_received_messages(
-            from_time=from_time, to_time=to_time, **kwargs
+            from_time=from_time,
+            to_time=to_time,
+            status_filter=status_filter,
+            **kwargs,
         )
 
     def mark_message_as_downloaded(self, message_id: str) -> Dict[str, Any]:

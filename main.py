@@ -12,7 +12,7 @@ def main():
     )
 
     # print(client.verify_message("11678994"))
-    # print(client.get_received_messages())
+    print(client.get_sent_messages())
 
 
 if __name__ == "__main__":
