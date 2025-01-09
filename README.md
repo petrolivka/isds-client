@@ -10,7 +10,7 @@ A Python client for interacting with the Czech Data Box Information System (ISDS
 1. Clone this repository
 2. Install dependencies:
 ```bash
-pip install -r requirements.txt
+uv sync
 ```
 
 ## Usage
@@ -80,6 +80,7 @@ results = client.find_data_box("Company Name")
 ## Requirements
 
 - Python 3.7+
+- uv>=0.4.17 (dependency manager)
 - zeep>=4.2.1 (SOAP client)
 - requests>=2.31.0
 - python-dateutil>=2.8.2
