@@ -128,6 +128,7 @@ class MessageInfoService(BaseService):
         params = {
             **({"dmFromTime": from_time} if from_time else {}),
             **({"dmToTime": to_time} if to_time else {}),
+            "dmStatusFilter": -1,  # all statuses (just for testing)
             **kwargs,
         }
         return self._call("GetListOfReceivedMessages", **params)
