@@ -67,16 +67,6 @@ results = client.data_box_search.find_data_box("Company Name")
 - Get user information (`get_user_info`)
 - Password management (`change_password`, `get_password_info`)
 
-### Data Box Manipulations
-- Create data boxes (`create_data_box`)
-- Delete data boxes (`delete_data_box`)
-- Update data box descriptions (`update_data_box_description`)
-- Manage users (`add_data_box_user`, `delete_data_box_user`, `update_data_box_user`)
-- Generate access data (`new_access_data`)
-- Enable/disable data boxes (`enable_own_data_box`, `disable_own_data_box`)
-- Manage open addressing (`set_open_addressing`, `clear_open_addressing`)
-- Get user lists (`get_data_box_users`)
-
 ## Requirements
 
 - Python 3.7+
