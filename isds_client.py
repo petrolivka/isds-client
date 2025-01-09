@@ -161,9 +161,9 @@ class ISDSClient:
         """Get information about a data box owner."""
         return self._data_box_access.get_owner_info(login)
 
-    def get_user_info(self, login: str) -> Dict[str, Any]:
+    def get_user_info(self) -> Dict[str, Any]:
         """Get information about a data box user."""
-        return self._data_box_access.get_user_info(login)
+        return self._data_box_access.get_user_info2()
 
     def change_password(self, old_password: str, new_password: str) -> Dict[str, Any]:
         """Change ISDS password."""

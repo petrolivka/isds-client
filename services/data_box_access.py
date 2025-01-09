@@ -27,7 +27,7 @@ class DataBoxAccessService(BaseService):
             base_url=base_url,
             wsdl_dir=wsdl_dir,
             wsdl_filename="db_access.wsdl",
-            endpoint="db",
+            endpoint="DsManage",
         )
 
     def get_owner_info(self, login: str) -> Dict[str, Any]:
@@ -52,18 +52,7 @@ class DataBoxAccessService(BaseService):
         """
         return self._call("GetOwnerInfoFromLogin2", dbOwnerLogin=login)
 
-    def get_user_info(self, login: str) -> Dict[str, Any]:
-        """Get information about a data box user by login.
-
-        Args:
-            login: Login username of the data box user
-
-        Returns:
-            User information
-        """
-        return self._call("GetUserInfoFromLogin", dbUserLogin=login)
-
-    def get_user_info2(self, login: str) -> Dict[str, Any]:
+    def get_user_info2(self, login: str = "") -> Dict[str, Any]:
         """Get extended information about a data box user by login.
 
         Args:
@@ -72,7 +61,7 @@ class DataBoxAccessService(BaseService):
         Returns:
             Extended user information
         """
-        return self._call("GetUserInfoFromLogin2", dbUserLogin=login)
+        return self._call("GetUserInfoFromLogin2", dbDummy=login)
 
     def change_password(self, old_password: str, new_password: str) -> Dict[str, Any]:
         """Change ISDS password.
