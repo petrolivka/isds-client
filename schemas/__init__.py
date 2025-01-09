@@ -3,6 +3,7 @@ from .messages import (
     MessageStatus,
     SenderType,
     GetReceivedMessagesResponse,
+    VerifyMessageResponse,
 )
 
 __all__ = [
@@ -10,4 +11,5 @@ __all__ = [
     "MessageStatus",
     "SenderType",
     "GetReceivedMessagesResponse",
+    "VerifyMessageResponse",
 ]

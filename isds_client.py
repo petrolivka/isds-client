@@ -1,6 +1,7 @@
 from pathlib import Path
 from typing import Optional, Dict, Any
 from datetime import datetime
+from schemas.messages import GetReceivedMessagesResponse, VerifyMessageResponse
 from services import (
     MessageOperationsService,
     MessageInfoService,
@@ -41,25 +42,25 @@ class ISDSClient:
         self.wsdl_dir = wsdl_dir or Path(__file__).parent / "wsdl"
 
         # Initialize services
-        self.message_operations = MessageOperationsService(
+        self._message_operations = MessageOperationsService(
             username=username,
             password=password,
             base_url=self.base_url,
             wsdl_dir=self.wsdl_dir,
         )
-        self.message_info = MessageInfoService(
+        self._message_info = MessageInfoService(
             username=username,
             password=password,
             base_url=self.base_url,
             wsdl_dir=self.wsdl_dir,
         )
-        self.data_box_search = DataBoxSearchService(
+        self._data_box_search = DataBoxSearchService(
             username=username,
             password=password,
             base_url=self.base_url,
             wsdl_dir=self.wsdl_dir,
         )
-        self.data_box_access = DataBoxAccessService(
+        self._data_box_access = DataBoxAccessService(
             username=username,
             password=password,
             base_url=self.base_url,
@@ -71,30 +72,34 @@ class ISDSClient:
         self, recipient_id: str, subject: str, content: str, **kwargs
     ) -> Dict[str, Any]:
         """Create and send a new message."""
-        return self.message_operations.create_message(
+        return self._message_operations.create_message(
             recipient_id=recipient_id, subject=subject, content=content, **kwargs
         )
 
     def download_message(self, message_id: str) -> Dict[str, Any]:
         """Download a message."""
-        return self.message_operations.download_message(message_id)
+        return self._message_operations.download_message(message_id)
 
     def download_signed_message(self, message_id: str) -> Dict[str, Any]:
         """Download a signed message."""
-        return self.message_operations.download_signed_message(message_id)
+        return self._message_operations.download_signed_message(message_id)
 
     def authenticate_message(self, message_id: str) -> Dict[str, Any]:
         """Verify the authenticity of a message."""
-        return self.message_operations.authenticate_message(message_id)
+        return self._message_operations.authenticate_message(message_id)
 
     # Message Info methods
     def get_message_info(self, message_id: str) -> Dict[str, Any]:
         """Get state changes for a message."""
-        return self.message_info.get_message_state_changes(message_id)
+        return self._message_info.get_message_state_changes(message_id)
 
     def get_delivery_info(self, message_id: str) -> Dict[str, Any]:
         """Get delivery information for a message."""
-        return self.message_info.get_delivery_info(message_id)
+        return self._message_info.get_delivery_info(message_id)
+
+    def verify_message(self, message_id: str) -> VerifyMessageResponse:
+        """Verify the integrity of a message."""
+        return self._message_info.verify_message(message_id)
 
     def get_sent_messages(
         self,
@@ -103,7 +108,7 @@ class ISDSClient:
         **kwargs,
     ) -> Dict[str, Any]:
         """Get list of sent messages."""
-        return self.message_info.get_sent_messages(
+        return self._message_info.get_sent_messages(
             from_time=from_time, to_time=to_time, **kwargs
         )
 
@@ -112,46 +117,46 @@ class ISDSClient:
         from_time: Optional[datetime] = None,
         to_time: Optional[datetime] = None,
         **kwargs,
-    ) -> Dict[str, Any]:
+    ) -> GetReceivedMessagesResponse:
         """Get list of received messages."""
-        return self.message_info.get_received_messages(
+        return self._message_info.get_received_messages(
             from_time=from_time, to_time=to_time, **kwargs
         )
 
     def mark_message_as_downloaded(self, message_id: str) -> Dict[str, Any]:
         """Mark a message as downloaded/read."""
-        return self.message_info.mark_message_as_downloaded(message_id)
+        return self._message_info.mark_message_as_downloaded(message_id)
 
     # Data Box Search methods
     def find_data_box(self, search_text: str, **kwargs) -> Dict[str, Any]:
         """Find a data box by search text."""
-        return self.data_box_search.find_data_box(search_text, **kwargs)
+        return self._data_box_search.find_data_box(search_text, **kwargs)
 
     def check_data_box(self, data_box_id: str) -> Dict[str, Any]:
         """Check if a data box exists and get its status."""
-        return self.data_box_search.check_data_box(data_box_id)
+        return self._data_box_search.check_data_box(data_box_id)
 
     def get_data_box_list(self, **kwargs) -> Dict[str, Any]:
         """Get a list of data boxes based on criteria."""
-        return self.data_box_search.get_data_box_list(**kwargs)
+        return self._data_box_search.get_data_box_list(**kwargs)
 
     def get_data_box_activity_status(self, data_box_id: str) -> Dict[str, Any]:
         """Get activity status of a data box."""
-        return self.data_box_search.get_activity_status(data_box_id)
+        return self._data_box_search.get_activity_status(data_box_id)
 
     # Data Box Access methods
     def get_owner_info(self, login: str) -> Dict[str, Any]:
         """Get information about a data box owner."""
-        return self.data_box_access.get_owner_info(login)
+        return self._data_box_access.get_owner_info(login)
 
     def get_user_info(self, login: str) -> Dict[str, Any]:
         """Get information about a data box user."""
-        return self.data_box_access.get_user_info(login)
+        return self._data_box_access.get_user_info(login)
 
     def change_password(self, old_password: str, new_password: str) -> Dict[str, Any]:
         """Change ISDS password."""
-        return self.data_box_access.change_password(old_password, new_password)
+        return self._data_box_access.change_password(old_password, new_password)
 
     def get_password_info(self) -> Dict[str, Any]:
         """Get information about the current password."""
-        return self.data_box_access.get_password_info()
+        return self._data_box_access.get_password_info()

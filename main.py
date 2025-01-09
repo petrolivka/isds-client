@@ -1,4 +1,3 @@
-from pprint import pprint
 from isds_client import ISDSClient
 import os
 from dotenv import load_dotenv
@@ -12,9 +11,8 @@ def main():
         password=os.getenv("DATA_BOX_PASSWORD") or "",
     )
 
-    print(client.message_info.verify_message("11678994"))
-    # print(client.data_box_access.get_password_info())
-    # print(client.message_info.get_received_messages())
+    # print(client.verify_message("11678994"))
+    # print(client.get_received_messages())
 
 
 if __name__ == "__main__":
