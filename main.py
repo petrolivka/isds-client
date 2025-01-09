@@ -12,7 +12,7 @@ def main():
     )
 
     # print(client.verify_message("11678994"))
-    print(client.get_user_info())
+    print(client.get_owner_info())
 
 
 if __name__ == "__main__":

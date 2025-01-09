@@ -157,9 +157,9 @@ class ISDSClient:
         return self._data_box_search.get_activity_status(data_box_id)
 
     # Data Box Access methods
-    def get_owner_info(self, login: str) -> Dict[str, Any]:
+    def get_owner_info(self) -> Dict[str, Any]:
         """Get information about a data box owner."""
-        return self._data_box_access.get_owner_info(login)
+        return self._data_box_access.get_owner_info2()
 
     def get_user_info(self) -> Dict[str, Any]:
         """Get information about a data box user."""

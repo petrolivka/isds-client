@@ -30,18 +30,7 @@ class DataBoxAccessService(BaseService):
             endpoint="DsManage",
         )
 
-    def get_owner_info(self, login: str) -> Dict[str, Any]:
-        """Get information about a data box owner by login.
-
-        Args:
-            login: Login username of the data box owner
-
-        Returns:
-            Owner information
-        """
-        return self._call("GetOwnerInfoFromLogin", dbOwnerLogin=login)
-
-    def get_owner_info2(self, login: str) -> Dict[str, Any]:
+    def get_owner_info2(self, login: str = "") -> Dict[str, Any]:
         """Get extended information about a data box owner by login.
 
         Args:
@@ -50,7 +39,7 @@ class DataBoxAccessService(BaseService):
         Returns:
             Extended owner information
         """
-        return self._call("GetOwnerInfoFromLogin2", dbOwnerLogin=login)
+        return self._call("GetOwnerInfoFromLogin2", dbDummy=login)
 
     def get_user_info2(self, login: str = "") -> Dict[str, Any]:
         """Get extended information about a data box user by login.
