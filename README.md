@@ -26,17 +26,17 @@ client = ISDSClient(
 )
 
 # Send a message
-client.create_message(
+client.message_operations.create_message(
     recipient_id="recipient_data_box_id",
     subject="Test message",
     content="Hello from ISDS client!"
 )
 
 # Get list of received messages
-messages = client.get_received_messages()
+messages = client.message_info.get_received_messages()
 
 # Search for a data box
-results = client.find_data_box("Company Name")
+results = client.data_box_search.find_data_box("Company Name")
 ```
 
 ## Features
