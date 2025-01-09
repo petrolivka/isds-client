@@ -1,7 +1,8 @@
 from datetime import datetime
 from enum import IntEnum
-from typing import List, Optional
-from pydantic import BaseModel, Field
+from typing import List, Optional, Union
+from pydantic import BaseModel, Field, field_serializer
+import base64
 
 
 class MessageStatus(IntEnum):
@@ -97,3 +98,24 @@ class MessageRecord(BaseModel):
         use_enum_values = True
         populate_by_name = True
         json_encoders = {datetime: lambda v: v.isoformat() if v else None}
+
+
+class DmHash(BaseModel):
+    """Data model for a dm hash."""
+
+    hash: Union[str, bytes] = Field(..., alias="_value_1")
+    algorithm: str = Field(..., alias="algorithm")
+
+    @field_serializer("hash")
+    def serialize_hash(self, hash_value: Union[str, bytes], _info):
+        """Serialize hash value to base64 if it's bytes."""
+        if isinstance(hash_value, bytes):
+            return base64.b64encode(hash_value).decode("utf-8")
+        return hash_value
+
+
+class VerifyMessageResponse(BaseModel):
+    """Data model for a verify message response."""
+
+    msg_hash: DmHash = Field(..., alias="dmHash")
+    status: DmStatus = Field(..., alias="dmStatus")

@@ -2,9 +2,8 @@ from pathlib import Path
 from typing import Optional, Dict, Any
 from datetime import datetime
 
-from schemas.messages import GetReceivedMessagesResponse
+from schemas.messages import GetReceivedMessagesResponse, VerifyMessageResponse
 from .base import BaseService
-from zeep.helpers import serialize_object
 
 
 class MessageInfoService(BaseService):
@@ -34,7 +33,7 @@ class MessageInfoService(BaseService):
             endpoint="dx",
         )
 
-    def verify_message(self, message_id: str) -> Dict[str, Any]:
+    def verify_message(self, message_id: str) -> VerifyMessageResponse:
         """Verify the integrity of a message.
 
         Args:
@@ -43,7 +42,9 @@ class MessageInfoService(BaseService):
         Returns:
             Verification result
         """
-        return self._call("VerifyMessage", dmID=message_id)
+        return VerifyMessageResponse.model_validate(
+            self._call("VerifyMessage", dmID=message_id)
+        )
 
     def get_message_envelope(self, message_id: str) -> Dict[str, Any]:
         """Get the envelope of a received message.
