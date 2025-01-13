@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Optional, Dict, Any
+from typing import List, Optional, Dict, Any
 from datetime import datetime
 
 from services import (
@@ -69,11 +69,11 @@ class ISDSClient:
 
     # Message Operations methods
     def create_message(
-        self, recipient_id: str, subject: str, content: str, **kwargs
+        self, recipient_id: str, subject: str, files: List[bytes], **kwargs
     ) -> Dict[str, Any]:
         """Create and send a new message."""
         return self._message_operations.create_message(
-            recipient_id=recipient_id, subject=subject, content=content, **kwargs
+            recipient_id=recipient_id, subject=subject, files=files, **kwargs
         )
 
     def download_message(self, message_id: str) -> Dict[str, Any]:

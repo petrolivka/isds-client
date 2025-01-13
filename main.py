@@ -12,9 +12,24 @@ def main():
         password=os.getenv("DATA_BOX_PASSWORD") or "",
     )
 
-    # print(client.verify_message("11678994"))
+    # result = client.get_owner_info()
+    # print(result)
 
-    result = client.get_pdz_info(PDZSender="11678994")
+    # result = client.verify_message("11678994")
+    # print(result)
+
+    # result = client.get_message_info("11678994")
+    # print(result)
+
+    # result = client.download_message("11678994")
+    # print(result)
+
+    with open("test/test.png", "rb") as f:
+        result = client.create_message(
+            recipient_id="8ppkmuz",
+            subject="Test",
+            files=[f.read()],
+        )
     print(result)
 
 
