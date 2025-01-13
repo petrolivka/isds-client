@@ -42,7 +42,7 @@ messages = client.get_received_messages()
 
 # Search for a data box
 results = client.find_data_box(
-    owner_info={"dbID": "8ppkmuz"},
+    owner_info={"dbID": "yyyyyyy"},
 )
 ```
 
