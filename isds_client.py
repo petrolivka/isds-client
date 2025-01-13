@@ -151,10 +151,6 @@ class ISDSClient:
         """Get a list of data boxes based on criteria."""
         return self._data_box_search.get_data_box_list(**kwargs)
 
-    def get_pdz_info(self, **kwargs) -> Dict[str, Any]:
-        """Get PDZ information for a data box."""
-        return self._data_box_search.get_pdz_info(**kwargs)
-
     def get_credit_info(self, data_box_id: str) -> Dict[str, Any]:
         """Get credit information for a data box."""
         return self._data_box_search.get_credit_info(data_box_id)
