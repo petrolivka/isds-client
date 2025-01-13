@@ -35,17 +35,6 @@ class MessageInfoService(BaseService):
             debug=debug,
         )
 
-    def verify_message(self, message_id: str) -> Dict[str, Any]:
-        """Verify the integrity of a message.
-
-        Args:
-            message_id: ID of the message to verify
-
-        Returns:
-            Verification result
-        """
-        return self._call("VerifyMessage", dmID=message_id)
-
     def get_message_envelope(self, message_id: str) -> Dict[str, Any]:
         """Get the envelope of a received message.
 
@@ -156,28 +145,6 @@ class MessageInfoService(BaseService):
             List of message state changes
         """
         return self._call("GetMessageStateChanges", dmID=message_id)
-
-    def get_message_author(self, message_id: str) -> Dict[str, Any]:
-        """Get information about the message sender.
-
-        Args:
-            message_id: ID of the message
-
-        Returns:
-            Information about the message sender
-        """
-        return self._call("GetMessageAuthor", dmID=message_id)
-
-    def get_message_author2(self, message_id: str) -> Dict[str, Any]:
-        """Get extended information about the message sender.
-
-        Args:
-            message_id: ID of the message
-
-        Returns:
-            Extended information about the message sender
-        """
-        return self._call("GetMessageAuthor2", dmID=message_id)
 
     def erase_message(self, message_id: str) -> Dict[str, Any]:
         """Erase a long-term stored message.

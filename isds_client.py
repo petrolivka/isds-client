@@ -138,6 +138,26 @@ class ISDSClient:
         """Mark a message as downloaded/read."""
         return self._message_info.mark_message_as_downloaded(message_id)
 
+    def get_message_envelope(self, message_id: str) -> Dict[str, Any]:
+        """Get the envelope of a message."""
+        return self._message_info.get_message_envelope(message_id)
+
+    def get_list_of_erased_messages(self, **kwargs) -> Dict[str, Any]:
+        """Get list of erased messages."""
+        return self._message_info.get_erased_messages(**kwargs)
+
+    def register_for_notifications(self, **kwargs) -> Dict[str, Any]:
+        """Register for external notifications."""
+        return self._message_info.register_for_notifications(**kwargs)
+
+    def get_notification_list(self, **kwargs) -> Dict[str, Any]:
+        """Get list of notifications."""
+        return self._message_info.get_notification_list(**kwargs)
+
+    def get_sent_message_envelope(self, message_id: str) -> Dict[str, Any]:
+        """Get the envelope of a sent message."""
+        return self._message_info.get_sent_message_envelope(message_id)
+
     # Data Box Search methods
     def find_data_box2(self, owner_info: Dict[str, Any], **kwargs) -> Dict[str, Any]:
         """Find a data box by search parameters."""

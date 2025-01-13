@@ -59,6 +59,10 @@ results = client.find_data_box2(
 - Mark messages as read (`mark_message_as_downloaded`)
 - Get message envelopes (`get_message_envelope`)
 - Get signed delivery info (`get_signed_delivery_info`)
+- Register for notifications (`register_for_notifications`)
+- Get notification list (`get_notification_list`)
+- Get sent message envelope (`get_sent_message_envelope`)
+- Get list of erased messages (`get_list_of_erased_messages`)
 
 ### Data Box Search
 - Find data boxes (`find_data_box`)
