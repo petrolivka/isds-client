@@ -22,21 +22,27 @@ from isds_client import ISDSClient
 client = ISDSClient(
     username="your_username",
     password="your_password",
-    production=False  # Use True for production environment
+    production=False,  # Use True for production environment
+    debug=True,
 )
 
 # Send a message
 client.message_operations.create_message(
-    recipient_id="recipient_data_box_id",
+    recipient_id="xxxxxxx",
     subject="Test message",
-    content="Hello from ISDS client!"
+    files=[
+        DmFile(file_path="test/test.png"),
+        DmFile(file_path="test/test2.png"),
+    ],
 )
 
 # Get list of received messages
-messages = client.message_info.get_received_messages()
+messages = client.get_received_messages()
 
 # Search for a data box
-results = client.data_box_search.find_data_box("Company Name")
+results = client.find_data_box2(
+    owner_info={"dbID": "8ppkmuz"},
+)
 ```
 
 ## Features
