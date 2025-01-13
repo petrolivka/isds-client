@@ -44,6 +44,10 @@ messages = client.get_received_messages()
 results = client.find_data_box(
     owner_info={"dbID": "yyyyyyy"},
 )
+
+# Get credit info
+credit_info = client.get_credit_info("xxxxxxx")
+
 ```
 
 ## Features
