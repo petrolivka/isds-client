@@ -155,7 +155,7 @@ class ISDSClient:
         return self._message_info.get_sent_message_envelope(message_id)
 
     # Data Box Search methods
-    def find_data_box2(self, owner_info: Dict[str, Any], **kwargs) -> Dict[str, Any]:
+    def find_data_box(self, owner_info: Dict[str, Any], **kwargs) -> Dict[str, Any]:
         """Find a data box by search parameters."""
         return self._data_box_search.find_data_box2(dbOwnerInfo=owner_info, **kwargs)
 

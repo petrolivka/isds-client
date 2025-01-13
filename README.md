@@ -65,7 +65,7 @@ results = client.find_data_box2(
 - Get list of erased messages (`get_list_of_erased_messages`)
 
 ### Data Box Search
-- Find data boxes (`find_data_box2`)
+- Find data boxes (`find_data_box`)
 - Check data box status (`check_data_box`)
 - Get data box list (`get_data_box_list`)
 - Get activity status (`get_activity_status`)
