@@ -12,6 +12,7 @@ class DataBoxSearchService(BaseService):
         password: str,
         base_url: str,
         wsdl_dir: Path,
+        debug: bool = False,
     ):
         """Initialize the data box search service.
 
@@ -20,6 +21,7 @@ class DataBoxSearchService(BaseService):
             password: Password
             base_url: Base URL of the ISDS service
             wsdl_dir: Directory containing WSDL files
+            debug: If True, enable debug logging
         """
         super().__init__(
             username=username,
@@ -28,6 +30,7 @@ class DataBoxSearchService(BaseService):
             wsdl_dir=wsdl_dir,
             wsdl_filename="db_search.wsdl",
             endpoint="df",
+            debug=debug,
         )
 
     def find_data_box2(self, **kwargs) -> Any:

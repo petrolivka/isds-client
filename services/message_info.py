@@ -14,6 +14,7 @@ class MessageInfoService(BaseService):
         password: str,
         base_url: str,
         wsdl_dir: Path,
+        debug: bool = False,
     ):
         """Initialize the message info service.
 
@@ -22,6 +23,7 @@ class MessageInfoService(BaseService):
             password: Password
             base_url: Base URL of the ISDS service
             wsdl_dir: Directory containing WSDL files
+            debug: If True, enable debug logging
         """
         super().__init__(
             username=username,
@@ -30,6 +32,7 @@ class MessageInfoService(BaseService):
             wsdl_dir=wsdl_dir,
             wsdl_filename="dm_info.wsdl",
             endpoint="dx",
+            debug=debug,
         )
 
     def verify_message(self, message_id: str) -> Dict[str, Any]:

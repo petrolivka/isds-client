@@ -1,15 +1,30 @@
 """Data box info service implementation."""
 
 from typing import Any
+from pathlib import Path
 from .base import BaseService
 
 
 class DataBoxInfoService(BaseService):
     """Service for data box info operations."""
 
-    @property
-    def wsdl_filename(self) -> str:
-        return "dm_info.wsdl"
+    def __init__(
+        self,
+        username: str,
+        password: str,
+        base_url: str,
+        wsdl_dir: Path,
+        debug: bool = False,
+    ):
+        super().__init__(
+            username,
+            password,
+            base_url,
+            wsdl_dir,
+            "dm_info.wsdl",
+            "dx",
+            debug,
+        )
 
     def get_databox_activity_status(self, **kwargs) -> Any:
         """Get activity status of a data box."""

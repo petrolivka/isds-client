@@ -20,6 +20,7 @@ class ISDSClient:
         password: str,
         production: bool = False,
         wsdl_dir: Optional[Path] = None,
+        debug: bool = False,
     ):
         """Initialize ISDS client.
 
@@ -28,6 +29,7 @@ class ISDSClient:
             password: Login password
             production: If True, use production environment, otherwise test
             wsdl_dir: Directory containing WSDL files (defaults to ./wsdl)
+            debug: If True, enable debug logging
         """
         self.username = username
         self.password = password
@@ -48,24 +50,28 @@ class ISDSClient:
             password=password,
             base_url=self.base_url,
             wsdl_dir=self.wsdl_dir,
+            debug=debug,
         )
         self._message_info = MessageInfoService(
             username=username,
             password=password,
             base_url=self.base_url,
             wsdl_dir=self.wsdl_dir,
+            debug=debug,
         )
         self._data_box_search = DataBoxSearchService(
             username=username,
             password=password,
             base_url=self.base_url,
             wsdl_dir=self.wsdl_dir,
+            debug=debug,
         )
         self._data_box_access = DataBoxAccessService(
             username=username,
             password=password,
             base_url=self.base_url,
             wsdl_dir=self.wsdl_dir,
+            debug=debug,
         )
 
     # Message Operations methods

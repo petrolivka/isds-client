@@ -1,3 +1,4 @@
+import logging
 from pathlib import Path
 from typing import Any
 from zeep import Client, Settings, exceptions
@@ -5,6 +6,7 @@ from zeep.transports import Transport
 import requests
 import base64
 from zeep.helpers import serialize_object
+from zeep.plugins import HistoryPlugin
 
 
 class ISDSError(Exception):
@@ -24,6 +26,7 @@ class BaseService:
         wsdl_dir: Path,
         wsdl_filename: str,
         endpoint: str,
+        debug: bool = False,
     ):
         """Initialize the service.
 
@@ -40,6 +43,10 @@ class BaseService:
         self.base_url = base_url
         self.wsdl_path = wsdl_dir / wsdl_filename
         self.endpoint = endpoint
+        self.history = HistoryPlugin()
+        self.logger = logging.getLogger(__name__)
+        self.logger.setLevel(logging.DEBUG if debug else logging.INFO)
+        self.debug = debug
         self.service = self._init_service()
 
     def _init_service(self):
@@ -58,7 +65,10 @@ class BaseService:
         try:
             # Create the client with the local WSDL file
             client = Client(
-                wsdl=str(self.wsdl_path), transport=transport, settings=Settings()
+                wsdl=str(self.wsdl_path),
+                transport=transport,
+                settings=Settings(),
+                plugins=[self.history],
             )
 
             # Update the service address to use the correct base URL and endpoint
@@ -90,6 +100,14 @@ class BaseService:
         try:
             operation = getattr(self.service, operation_name)
             response = operation(**kwargs)
+
+            if self.debug:
+                self.logger.debug(
+                    f"Request to {operation_name}: {self.history.last_sent}"
+                )
+                self.logger.debug(
+                    f"Response from {operation_name}: {self.history.last_received}"
+                )
 
             if response is None:
                 raise ISDSError(f"No response received from {operation_name}")

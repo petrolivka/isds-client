@@ -1,4 +1,3 @@
-import base64
 from pathlib import Path
 from typing import Dict, Any, List
 
@@ -15,6 +14,7 @@ class MessageOperationsService(BaseService):
         password: str,
         base_url: str,
         wsdl_dir: Path,
+        debug: bool = False,
     ):
         """Initialize the message operations service.
 
@@ -23,6 +23,7 @@ class MessageOperationsService(BaseService):
             password: Password
             base_url: Base URL of the ISDS service
             wsdl_dir: Directory containing WSDL files
+            debug: If True, enable debug logging
         """
         super().__init__(
             username=username,
@@ -31,6 +32,7 @@ class MessageOperationsService(BaseService):
             wsdl_dir=wsdl_dir,
             wsdl_filename="dm_operations.wsdl",
             endpoint="dz",
+            debug=debug,
         )
 
     def create_message(
