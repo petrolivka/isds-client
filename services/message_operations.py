@@ -54,17 +54,17 @@ class MessageOperationsService(BaseService):
                 "dbIDRecipient": recipient_id,
                 "dmAnnotation": subject,
             },
-            "dmFiles": [
-                {
-                    "dmFile": {
+            "dmFiles": {
+                "dmFile": [
+                    {
                         "dmEncodedContent": file.dmEncodedContent,
                         "dmMimeType": file.dmMimeType,
                         "dmFileMetaType": file.dmFileMetaType,
                         "dmFileDescr": file.dmFileDescr,
                     }
-                }
-                for file in files
-            ],
+                    for file in files
+                ]
+            },
             **kwargs,
         }
         return self._call("CreateMessage", **params)

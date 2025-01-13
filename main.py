@@ -7,7 +7,10 @@ from dotenv import load_dotenv
 from schemas.base import DmFile
 
 logging.basicConfig(
-    level=logging.INFO,
+    level=logging.DEBUG,
+    filename="isds.log",
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
 )
 
 load_dotenv()
@@ -27,7 +30,7 @@ def main():
 
     result = client.create_message(
         recipient_id="8ppkmuz",
-        subject="Nejaka testovaci sprava png + pdf",
+        subject=f"Nejaka testovaci sprava png + pdf {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
         files=[
             DmFile(file_path="test/files/test.png"),
             DmFile(file_path="test/files/test2.png"),
