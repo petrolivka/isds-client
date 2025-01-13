@@ -17,6 +17,7 @@ uv sync
 
 ```python
 from isds_client import ISDSClient
+from schemas.base import DmFile
 
 # Initialize client (test environment)
 client = ISDSClient(
@@ -27,7 +28,7 @@ client = ISDSClient(
 )
 
 # Send a message
-client.message_operations.create_message(
+client.create_message(
     recipient_id="xxxxxxx",
     subject="Test message",
     files=[
@@ -40,7 +41,7 @@ client.message_operations.create_message(
 messages = client.get_received_messages()
 
 # Search for a data box
-results = client.find_data_box2(
+results = client.find_data_box(
     owner_info={"dbID": "8ppkmuz"},
 )
 ```
@@ -57,18 +58,16 @@ results = client.find_data_box2(
 - Get delivery information (`get_delivery_info`)
 - List messages (`get_sent_messages`, `get_received_messages`)
 - Mark messages as read (`mark_message_as_downloaded`)
-- Get message envelopes (`get_message_envelope`)
-- Get signed delivery info (`get_signed_delivery_info`)
+- Get message envelopes (`get_message_envelope`, `get_sent_message_envelope`)
+- Get signed delivery info (`get_delivery_info`)
 - Register for notifications (`register_for_notifications`)
 - Get notification list (`get_notification_list`)
-- Get sent message envelope (`get_sent_message_envelope`)
 - Get list of erased messages (`get_list_of_erased_messages`)
 
 ### Data Box Search
 - Find data boxes (`find_data_box`)
 - Check data box status (`check_data_box`)
 - Get data box list (`get_data_box_list`)
-- Get activity status (`get_activity_status`)
 - Get credit info (`get_credit_info`)
 
 ### Data Box Access
@@ -78,11 +77,11 @@ results = client.find_data_box2(
 
 ## Requirements
 
-- Python 3.7+
-- uv>=0.4.17 (dependency manager)
-- zeep>=4.2.1 (SOAP client)
-- requests>=2.31.0
-- python-dateutil>=2.8.2
+- Python 3.12+
+- pydantic>=2.10.5
+- python-dateutil>=2.9.0.post0
+- python-dotenv>=1.0.1
+- zeep==4.3.1
 
 ## Note
 
@@ -107,7 +106,6 @@ The client automatically handles the following ISDS service endpoints:
 - Message Info (dm_info.wsdl)
 - Data Box Search (db_search.wsdl)
 - Data Box Access (db_access.wsdl)
-- Data Box Manipulations (db_manipulations.wsdl)
 
 ## Error Handling
 
