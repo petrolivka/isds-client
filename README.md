@@ -55,6 +55,7 @@ results = client.find_data_box(
 
 ### Message Information
 - Get message state changes (`get_message_info`)
+- Verify message authenticity (`verify_message`)
 - Get delivery information (`get_delivery_info`)
 - List messages (`get_sent_messages`, `get_received_messages`)
 - Mark messages as read (`mark_message_as_downloaded`)

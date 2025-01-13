@@ -19,16 +19,9 @@ def main():
         debug=False,
     )
 
-    # result = client.get_owner_info()
-    # print(result)
-
-    # result = client.verify_message("11678994")
-    # print(result)
-
-    # result = client.get_message_info("11678994")
-    # print(result)
-
-    # result = client.download_message("11678994")
+    # result = client.find_data_box(
+    #     owner_info={"dbID": "8ppkmuz"},
+    # )
     # print(result)
 
     # result = client.create_message(
@@ -41,9 +34,16 @@ def main():
     # )
     # print(result)
 
-    # result = client.find_data_box2(
-    #     owner_info={"dbID": "8ppkmuz"},
-    # )
+    # result = client.download_message("11678994")
+    # print(result)
+
+    # result = client.get_owner_info()
+    # print(result)
+
+    result = client.verify_message("11678994")
+    print(result)
+
+    # result = client.get_message_info("11678994")
     # print(result)
 
 

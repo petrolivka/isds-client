@@ -154,6 +154,10 @@ class ISDSClient:
         """Get the envelope of a sent message."""
         return self._message_info.get_sent_message_envelope(message_id)
 
+    def verify_message(self, message_id: str) -> Dict[str, Any]:
+        """Verify the authenticity of a message."""
+        return self._message_info.verify_message(message_id)
+
     # Data Box Search methods
     def find_data_box(self, owner_info: Dict[str, Any], **kwargs) -> Dict[str, Any]:
         """Find a data box by search parameters."""

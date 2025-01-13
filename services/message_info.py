@@ -212,3 +212,7 @@ class MessageInfoService(BaseService):
             Message envelope
         """
         return self._call("SentMessageEnvelopeDownload", dmID=message_id)
+
+    def verify_message(self, message_id: str) -> Dict[str, Any]:
+        """Verify the authenticity of a message."""
+        return self._call("VerifyMessage", dmID=message_id)
