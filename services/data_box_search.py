@@ -56,7 +56,7 @@ class DataBoxSearchService(BaseService):
         """
         return self._call("CheckDataBox", dbID=data_box_id)
 
-    def get_data_box_list(self, **kwargs) -> Any:
+    def isds_search_3(self, search_text: str, **kwargs) -> Any:
         """Get a list of data boxes based on criteria.
 
         Args:
@@ -65,7 +65,7 @@ class DataBoxSearchService(BaseService):
         Returns:
             List of data boxes
         """
-        return self._call("GetDataBoxList", **kwargs)
+        return self._call("ISDSSearch3", searchText=search_text, **kwargs)
 
     def get_credit_info(self, data_box_id: str) -> Any:
         """Get credit information for a data box.

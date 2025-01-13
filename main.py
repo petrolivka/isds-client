@@ -50,6 +50,38 @@ def main():
     # )
     # print(result)
 
+    # result = client.get_delivery_info("11678994")
+    # print(result)
+
+    # result = client.mark_message_as_downloaded("11678994")
+    # print(result)
+
+    # result = client.get_message_envelope("11678994")
+    # print(result)
+
+    # result = client.get_sent_message_envelope("11693587")
+    # print(result)
+
+    # result = client.data_box_fulltext_search(
+    #    search_text="mordor",
+    # )
+    # print(result)
+
+    # result = client.get_credit_info("i9wkmqk")
+    # print(result)
+
+    # result = client.get_owner_info()
+    # print(result)
+
+    # result = client.get_user_info()
+    # print(result)
+
+    # result = client.change_password("123456", "12345678")
+    # print(result)
+
+    result = client.get_password_info()
+    print(result)
+
 
 if __name__ == "__main__":
     main()

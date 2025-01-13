@@ -169,9 +169,9 @@ class ISDSClient:
         """Check if a data box exists and get its status."""
         return self._data_box_search.check_data_box(data_box_id)
 
-    def get_data_box_list(self, **kwargs) -> Dict[str, Any]:
+    def data_box_fulltext_search(self, search_text: str, **kwargs) -> Dict[str, Any]:
         """Get a list of data boxes based on criteria."""
-        return self._data_box_search.get_data_box_list(**kwargs)
+        return self._data_box_search.isds_search_3(search_text, **kwargs)
 
     def get_credit_info(self, data_box_id: str) -> Dict[str, Any]:
         """Get credit information for a data box."""
