@@ -65,7 +65,6 @@ results = client.find_data_box2(
 - Check data box status (`check_data_box`)
 - Get data box lists (`get_data_box_list`)
 - Get activity status (`get_data_box_activity_status`)
-- Get PDZ info (`get_pdz_info`)
 - Get credit info (`get_credit_info`)
 
 ### Data Box Access

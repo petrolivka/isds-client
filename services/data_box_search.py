@@ -67,16 +67,6 @@ class DataBoxSearchService(BaseService):
         """
         return self._call("GetDataBoxList", **kwargs)
 
-    def get_pdz_info(self, **kwargs) -> Any:
-        """Get PDZ (Postal Data Message) information for a data box.
-
-        Args:
-            **kwargs: Additional parameters
-        Returns:
-            PDZ information
-        """
-        return self._call("PDZInfo", **kwargs)
-
     def get_credit_info(self, data_box_id: str) -> Any:
         """Get credit information for a data box.
 
@@ -87,28 +77,6 @@ class DataBoxSearchService(BaseService):
             Credit information
         """
         return self._call("DataBoxCreditInfo", dbID=data_box_id)
-
-    def search_isds2(self, **kwargs) -> Any:
-        """Search ISDS with extended parameters (version 2).
-
-        Args:
-            **kwargs: Search parameters
-
-        Returns:
-            Search results
-        """
-        return self._call("ISDSSearch2", **kwargs)
-
-    def search_isds3(self, **kwargs) -> Dict[str, Any]:
-        """Search ISDS with extended parameters (version 3).
-
-        Args:
-            **kwargs: Search parameters
-
-        Returns:
-            Search results
-        """
-        return self._call("ISDSSearch3", **kwargs)
 
     def get_activity_status(self, data_box_id: str) -> Dict[str, Any]:
         """Get activity status of a data box.
@@ -142,33 +110,3 @@ class DataBoxSearchService(BaseService):
             DT information
         """
         return self._call("DTInfo", dbID=data_box_id)
-
-    def get_pdz_send_info(self, data_box_id: str) -> Dict[str, Any]:
-        """Get PDZ sending information for a data box.
-
-        Args:
-            data_box_id: ID of the data box
-
-        Returns:
-            PDZ sending information
-        """
-        return self._call("PDZSendInfo", dbID=data_box_id)
-
-    def get_constants(self) -> Dict[str, Any]:
-        """Get system constants.
-
-        Returns:
-            System constants
-        """
-        return self._call("GetConstants")
-
-    def get_data_box_address(self, data_box_id: str) -> Dict[str, Any]:
-        """Get address information for a data box.
-
-        Args:
-            data_box_id: ID of the data box
-
-        Returns:
-            Data box address information
-        """
-        return self._call("GetDataBoxAddress", dbID=data_box_id)
