@@ -27,7 +27,7 @@ class MessageOperationsService(BaseService):
             base_url=base_url,
             wsdl_dir=wsdl_dir,
             wsdl_filename="dm_operations.wsdl",
-            endpoint="dx",
+            endpoint="dz",
         )
 
     def create_message(
