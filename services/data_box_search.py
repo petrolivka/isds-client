@@ -88,25 +88,3 @@ class DataBoxSearchService(BaseService):
             Activity status information
         """
         return self._call("GetDataBoxActivityStatus", dbID=data_box_id)
-
-    def find_personal_data_box(self, **kwargs) -> Dict[str, Any]:
-        """Find a personal data box.
-
-        Args:
-            **kwargs: Search parameters (e.g., birth_date, surname, etc.)
-
-        Returns:
-            Found personal data box information
-        """
-        return self._call("FindPersonalDataBox", **kwargs)
-
-    def get_dt_info(self, data_box_id: str) -> Dict[str, Any]:
-        """Get DT (Trusted Data) information for a data box.
-
-        Args:
-            data_box_id: ID of the data box
-
-        Returns:
-            DT information
-        """
-        return self._call("DTInfo", dbID=data_box_id)

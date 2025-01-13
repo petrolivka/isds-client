@@ -104,10 +104,6 @@ class ISDSClient:
         """Get delivery information for a message."""
         return self._message_info.get_delivery_info(message_id)
 
-    def verify_message(self, message_id: str) -> Dict[str, Any]:
-        """Verify the integrity of a message."""
-        return self._message_info.verify_message(message_id)
-
     def get_sent_messages(
         self,
         from_time: Optional[datetime] = None,
