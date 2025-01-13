@@ -2,11 +2,6 @@ from pathlib import Path
 from typing import Optional, Dict, Any
 from datetime import datetime
 
-from schemas.messages import (
-    GetReceivedMessagesResponse,
-    MessageStatus,
-    VerifyMessageResponse,
-)
 from .base import BaseService
 
 
@@ -37,7 +32,7 @@ class MessageInfoService(BaseService):
             endpoint="dx",
         )
 
-    def verify_message(self, message_id: str) -> VerifyMessageResponse:
+    def verify_message(self, message_id: str) -> Dict[str, Any]:
         """Verify the integrity of a message.
 
         Args:
@@ -46,9 +41,7 @@ class MessageInfoService(BaseService):
         Returns:
             Verification result
         """
-        return VerifyMessageResponse.model_validate(
-            self._call("VerifyMessage", dmID=message_id)
-        )
+        return self._call("VerifyMessage", dmID=message_id)
 
     def get_message_envelope(self, message_id: str) -> Dict[str, Any]:
         """Get the envelope of a received message.
@@ -98,7 +91,6 @@ class MessageInfoService(BaseService):
         self,
         from_time: Optional[datetime] = None,
         to_time: Optional[datetime] = None,
-        status_filter: Optional[MessageStatus] = MessageStatus.ALL,
         **kwargs,
     ) -> Dict[str, Any]:
         """Get list of sent messages.
@@ -114,7 +106,11 @@ class MessageInfoService(BaseService):
         params = {
             **({"dmFromTime": from_time} if from_time else {}),
             **({"dmToTime": to_time} if to_time else {}),
-            "dmStatusFilter": status_filter.value if status_filter else -1,
+            **(
+                {"dmStatusFilter": kwargs.get("status_filter")}
+                if kwargs.get("status_filter")
+                else {"dmStatusFilter": -1}
+            ),
             **kwargs,
         }
         return self._call("GetListOfSentMessages", **params)
@@ -123,9 +119,8 @@ class MessageInfoService(BaseService):
         self,
         from_time: Optional[datetime] = None,
         to_time: Optional[datetime] = None,
-        status_filter: Optional[MessageStatus] = MessageStatus.ALL,
         **kwargs,
-    ) -> GetReceivedMessagesResponse:
+    ) -> Dict[str, Any]:
         """Get list of received messages.
 
         Args:
@@ -139,12 +134,14 @@ class MessageInfoService(BaseService):
         params = {
             **({"dmFromTime": from_time} if from_time else {}),
             **({"dmToTime": to_time} if to_time else {}),
-            "dmStatusFilter": status_filter.value if status_filter else -1,
+            **(
+                {"dmStatusFilter": kwargs.get("status_filter")}
+                if kwargs.get("status_filter")
+                else {"dmStatusFilter": -1}
+            ),
             **kwargs,
         }
-        return GetReceivedMessagesResponse.model_validate(
-            self._call("GetListOfReceivedMessages", **params)
-        )
+        return self._call("GetListOfReceivedMessages", **params)
 
     def get_message_state_changes(self, message_id: str) -> Dict[str, Any]:
         """Get state changes for a message.

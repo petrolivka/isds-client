@@ -1,14 +1,6 @@
 from pathlib import Path
 from typing import Dict, Any
 from .base import BaseService
-from schemas.search import (
-    FindDataBoxRequest,
-    FindDataBoxResponse,
-    CheckDataBoxResponse,
-    GetDataBoxListResponse,
-    PDZInfoResponse,
-    CreditInfoResponse,
-)
 
 
 class DataBoxSearchService(BaseService):
@@ -47,11 +39,10 @@ class DataBoxSearchService(BaseService):
         Returns:
             List of found data boxes
         """
-        request = FindDataBoxRequest.model_validate(kwargs)
-        response = self._call("FindDataBox2", **request.model_dump(by_alias=True))
-        return FindDataBoxResponse.model_validate(response)
+        response = self._call("FindDataBox2", **kwargs)
+        return response
 
-    def check_data_box(self, data_box_id: str) -> CheckDataBoxResponse:
+    def check_data_box(self, data_box_id: str) -> Any:
         """Check if a data box exists and get its status.
 
         Args:
@@ -60,11 +51,9 @@ class DataBoxSearchService(BaseService):
         Returns:
             Data box status information
         """
-        return CheckDataBoxResponse.model_validate(
-            self._call("CheckDataBox", dbID=data_box_id)
-        )
+        return self._call("CheckDataBox", dbID=data_box_id)
 
-    def get_data_box_list(self, **kwargs) -> GetDataBoxListResponse:
+    def get_data_box_list(self, **kwargs) -> Any:
         """Get a list of data boxes based on criteria.
 
         Args:
@@ -73,22 +62,19 @@ class DataBoxSearchService(BaseService):
         Returns:
             List of data boxes
         """
-        return GetDataBoxListResponse.model_validate(
-            self._call("GetDataBoxList", **kwargs)
-        )
+        return self._call("GetDataBoxList", **kwargs)
 
-    def get_pdz_info(self, data_box_id: str) -> PDZInfoResponse:
+    def get_pdz_info(self, **kwargs) -> Any:
         """Get PDZ (Postal Data Message) information for a data box.
 
         Args:
-            data_box_id: ID of the data box
-
+            **kwargs: Additional parameters
         Returns:
             PDZ information
         """
-        return PDZInfoResponse.model_validate(self._call("PDZInfo", dbID=data_box_id))
+        return self._call("PDZInfo", **kwargs)
 
-    def get_credit_info(self, data_box_id: str) -> CreditInfoResponse:
+    def get_credit_info(self, data_box_id: str) -> Any:
         """Get credit information for a data box.
 
         Args:
@@ -97,11 +83,9 @@ class DataBoxSearchService(BaseService):
         Returns:
             Credit information
         """
-        return CreditInfoResponse.model_validate(
-            self._call("DataBoxCreditInfo", dbID=data_box_id)
-        )
+        return self._call("DataBoxCreditInfo", dbID=data_box_id)
 
-    def search_isds2(self, **kwargs) -> Dict[str, Any]:
+    def search_isds2(self, **kwargs) -> Any:
         """Search ISDS with extended parameters (version 2).
 
         Args:

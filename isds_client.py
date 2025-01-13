@@ -1,19 +1,7 @@
 from pathlib import Path
 from typing import Optional, Dict, Any
 from datetime import datetime
-from schemas.messages import (
-    GetReceivedMessagesResponse,
-    MessageStatus,
-    VerifyMessageResponse,
-)
-from schemas.search import (
-    FindDataBoxResponse,
-    CheckDataBoxResponse,
-    GetDataBoxListResponse,
-    OwnerInfo,
-    PDZInfoResponse,
-    CreditInfoResponse,
-)
+
 from services import (
     MessageOperationsService,
     MessageInfoService,
@@ -109,7 +97,7 @@ class ISDSClient:
         """Get delivery information for a message."""
         return self._message_info.get_delivery_info(message_id)
 
-    def verify_message(self, message_id: str) -> VerifyMessageResponse:
+    def verify_message(self, message_id: str) -> Dict[str, Any]:
         """Verify the integrity of a message."""
         return self._message_info.verify_message(message_id)
 
@@ -117,14 +105,12 @@ class ISDSClient:
         self,
         from_time: Optional[datetime] = None,
         to_time: Optional[datetime] = None,
-        status_filter: Optional[MessageStatus] = MessageStatus.ALL,
         **kwargs,
     ) -> Dict[str, Any]:
         """Get list of sent messages."""
         return self._message_info.get_sent_messages(
             from_time=from_time,
             to_time=to_time,
-            status_filter=status_filter,
             **kwargs,
         )
 
@@ -132,14 +118,12 @@ class ISDSClient:
         self,
         from_time: Optional[datetime] = None,
         to_time: Optional[datetime] = None,
-        status_filter: Optional[MessageStatus] = MessageStatus.ALL,
         **kwargs,
-    ) -> GetReceivedMessagesResponse:
+    ) -> Dict[str, Any]:
         """Get list of received messages."""
         return self._message_info.get_received_messages(
             from_time=from_time,
             to_time=to_time,
-            status_filter=status_filter,
             **kwargs,
         )
 
@@ -148,23 +132,23 @@ class ISDSClient:
         return self._message_info.mark_message_as_downloaded(message_id)
 
     # Data Box Search methods
-    def find_data_box2(self, owner_info: OwnerInfo, **kwargs) -> FindDataBoxResponse:
+    def find_data_box2(self, owner_info: Dict[str, Any], **kwargs) -> Dict[str, Any]:
         """Find a data box by search parameters."""
         return self._data_box_search.find_data_box2(dbOwnerInfo=owner_info, **kwargs)
 
-    def check_data_box(self, data_box_id: str) -> CheckDataBoxResponse:
+    def check_data_box(self, data_box_id: str) -> Dict[str, Any]:
         """Check if a data box exists and get its status."""
         return self._data_box_search.check_data_box(data_box_id)
 
-    def get_data_box_list(self, **kwargs) -> GetDataBoxListResponse:
+    def get_data_box_list(self, **kwargs) -> Dict[str, Any]:
         """Get a list of data boxes based on criteria."""
         return self._data_box_search.get_data_box_list(**kwargs)
 
-    def get_pdz_info(self, data_box_id: str) -> PDZInfoResponse:
+    def get_pdz_info(self, **kwargs) -> Dict[str, Any]:
         """Get PDZ information for a data box."""
-        return self._data_box_search.get_pdz_info(data_box_id)
+        return self._data_box_search.get_pdz_info(**kwargs)
 
-    def get_credit_info(self, data_box_id: str) -> CreditInfoResponse:
+    def get_credit_info(self, data_box_id: str) -> Dict[str, Any]:
         """Get credit information for a data box."""
         return self._data_box_search.get_credit_info(data_box_id)
 
