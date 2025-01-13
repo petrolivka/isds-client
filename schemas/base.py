@@ -17,7 +17,7 @@ class DmFile(BaseModel):
 
     @computed_field
     def dmFileMetaType(self) -> str | None:
-        return "file"
+        return "enclosure"
 
     @computed_field
     def dmFileDescr(self) -> str | None:

@@ -25,15 +25,15 @@ def main():
     # )
     # print(result)
 
-    # result = client.create_message(
-    #     recipient_id="8ppkmuz",
-    #     subject="Nejaka testovaci sprava png + pdf",
-    #     files=[
-    #         DmFile(file_path="test/test.png"),
-    #         DmFile(file_path="test/test2.png"),
-    #     ],
-    # )
-    # print(result)
+    result = client.create_message(
+        recipient_id="8ppkmuz",
+        subject="Nejaka testovaci sprava png + pdf",
+        files=[
+            DmFile(file_path="test/files/test.png"),
+            DmFile(file_path="test/files/test2.png"),
+        ],
+    )
+    print(result)
 
     # result = client.download_message("11678994")
     # print(result)
@@ -79,8 +79,8 @@ def main():
     # result = client.change_password("123456", "12345678")
     # print(result)
 
-    result = client.get_password_info()
-    print(result)
+    # result = client.get_password_info()
+    # print(result)
 
 
 if __name__ == "__main__":
