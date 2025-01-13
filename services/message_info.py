@@ -135,7 +135,9 @@ class MessageInfoService(BaseService):
         }
         return self._call("GetListOfReceivedMessages", **params)
 
-    def get_message_state_changes(self, message_id: str) -> Dict[str, Any]:
+    def get_message_state_changes(
+        self, dmFromTime: datetime, dmToTime: datetime
+    ) -> Dict[str, Any]:
         """Get state changes for a message.
 
         Args:
@@ -144,7 +146,9 @@ class MessageInfoService(BaseService):
         Returns:
             List of message state changes
         """
-        return self._call("GetMessageStateChanges", dmID=message_id)
+        return self._call(
+            "GetMessageStateChanges", dmFromTime=dmFromTime, dmToTime=dmToTime
+        )
 
     def erase_message(self, message_id: str) -> Dict[str, Any]:
         """Erase a long-term stored message.

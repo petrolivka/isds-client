@@ -1,3 +1,4 @@
+from datetime import datetime, timedelta
 import logging
 from isds_client import ISDSClient
 import os
@@ -40,11 +41,14 @@ def main():
     # result = client.get_owner_info()
     # print(result)
 
-    result = client.verify_message("11678994")
-    print(result)
-
-    # result = client.get_message_info("11678994")
+    # result = client.verify_message("11678994")
     # print(result)
+
+    result = client.get_message_info(
+        from_time=datetime.now() - timedelta(days=1),
+        to_time=datetime.now(),
+    )
+    print(result)
 
 
 if __name__ == "__main__":

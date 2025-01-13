@@ -96,9 +96,11 @@ class ISDSClient:
         return self._message_operations.authenticate_message(message_id)
 
     # Message Info methods
-    def get_message_info(self, message_id: str) -> Dict[str, Any]:
+    def get_message_info(
+        self, from_time: datetime, to_time: datetime
+    ) -> Dict[str, Any]:
         """Get state changes for a message."""
-        return self._message_info.get_message_state_changes(message_id)
+        return self._message_info.get_message_state_changes(from_time, to_time)
 
     def get_delivery_info(self, message_id: str) -> Dict[str, Any]:
         """Get delivery information for a message."""
