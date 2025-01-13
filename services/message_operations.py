@@ -1,6 +1,8 @@
 import base64
 from pathlib import Path
 from typing import Dict, Any, List
+
+from schemas.base import DmFile
 from .base import BaseService
 
 
@@ -32,7 +34,7 @@ class MessageOperationsService(BaseService):
         )
 
     def create_message(
-        self, recipient_id: str, subject: str, files: List[bytes], **kwargs
+        self, recipient_id: str, subject: str, files: List[DmFile], **kwargs
     ) -> Dict[str, Any]:
         """Create and send a new message.
 
@@ -53,10 +55,10 @@ class MessageOperationsService(BaseService):
             "dmFiles": [
                 {
                     "dmFile": {
-                        "dmEncodedContent": base64.b64encode(file).decode("utf-8"),
-                        "dmMimeType": "image/png",
-                        "dmFileMetaType": "image",
-                        "dmFileDescr": "test.png",
+                        "dmEncodedContent": file.dmEncodedContent,
+                        "dmMimeType": file.dmMimeType,
+                        "dmFileMetaType": file.dmFileMetaType,
+                        "dmFileDescr": file.dmFileDescr,
                     }
                 }
                 for file in files

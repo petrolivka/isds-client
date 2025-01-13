@@ -2,6 +2,7 @@ from pathlib import Path
 from typing import List, Optional, Dict, Any
 from datetime import datetime
 
+from schemas.base import DmFile
 from services import (
     MessageOperationsService,
     MessageInfoService,
@@ -69,7 +70,7 @@ class ISDSClient:
 
     # Message Operations methods
     def create_message(
-        self, recipient_id: str, subject: str, files: List[bytes], **kwargs
+        self, recipient_id: str, subject: str, files: List[DmFile], **kwargs
     ) -> Dict[str, Any]:
         """Create and send a new message."""
         return self._message_operations.create_message(

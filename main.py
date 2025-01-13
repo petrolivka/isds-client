@@ -2,6 +2,8 @@ from isds_client import ISDSClient
 import os
 from dotenv import load_dotenv
 
+from schemas.base import DmFile
+
 
 load_dotenv()
 
@@ -24,12 +26,14 @@ def main():
     # result = client.download_message("11678994")
     # print(result)
 
-    with open("test/test.png", "rb") as f:
-        result = client.create_message(
-            recipient_id="8ppkmuz",
-            subject="Test",
-            files=[f.read()],
-        )
+    result = client.create_message(
+        recipient_id="8ppkmuz",
+        subject="Nejaka testovaci sprava png + pdf",
+        files=[
+            DmFile(file_path="test/test.png"),
+            DmFile(file_path="test/test3.pdf"),
+        ],
+    )
     print(result)
 
 
