@@ -44,11 +44,11 @@ def main():
     # result = client.verify_message("11678994")
     # print(result)
 
-    result = client.get_message_info(
-        from_time=datetime.now() - timedelta(days=1),
-        to_time=datetime.now(),
-    )
-    print(result)
+    # result = client.get_message_info(
+    #     from_time=datetime.now() - timedelta(days=1),
+    #     to_time=datetime.now(),
+    # )
+    # print(result)
 
 
 if __name__ == "__main__":
