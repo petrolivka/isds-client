@@ -4,6 +4,8 @@ from typing import List, Optional, Union
 from pydantic import BaseModel, Field, field_serializer
 import base64
 
+from schemas.status import DmStatus
+
 
 class MessageStatus(IntEnum):
     """Message status enumeration."""
@@ -28,13 +30,6 @@ class SenderType(IntEnum):
     PO = 20
     PFO = 30
     FO = 40
-
-
-class DmStatus(BaseModel):
-    """Data model for a dm status."""
-
-    status_code: int = Field(..., alias="dmStatusCode")
-    status_message: str = Field(..., alias="dmStatusMessage")
 
 
 class DmRecords(BaseModel):

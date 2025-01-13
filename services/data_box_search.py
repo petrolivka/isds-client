@@ -1,6 +1,14 @@
 from pathlib import Path
 from typing import Dict, Any
 from .base import BaseService
+from schemas.search import (
+    FindDataBoxRequest,
+    FindDataBoxResponse,
+    CheckDataBoxResponse,
+    GetDataBoxListResponse,
+    PDZInfoResponse,
+    CreditInfoResponse,
+)
 
 
 class DataBoxSearchService(BaseService):
@@ -30,19 +38,7 @@ class DataBoxSearchService(BaseService):
             endpoint="df",
         )
 
-    def find_data_box(self, search_text: str, **kwargs) -> Dict[str, Any]:
-        """Find a data box by search text.
-
-        Args:
-            search_text: Text to search for
-            **kwargs: Additional search parameters
-
-        Returns:
-            List of found data boxes
-        """
-        return self._call("FindDataBox", searchText=search_text, **kwargs)
-
-    def find_data_box2(self, **kwargs) -> Dict[str, Any]:
+    def find_data_box2(self, **kwargs) -> Any:
         """Find a data box with extended search parameters.
 
         Args:
@@ -51,9 +47,11 @@ class DataBoxSearchService(BaseService):
         Returns:
             List of found data boxes
         """
-        return self._call("FindDataBox2", **kwargs)
+        request = FindDataBoxRequest.model_validate(kwargs)
+        response = self._call("FindDataBox2", **request.model_dump(by_alias=True))
+        return FindDataBoxResponse.model_validate(response)
 
-    def check_data_box(self, data_box_id: str) -> Dict[str, Any]:
+    def check_data_box(self, data_box_id: str) -> CheckDataBoxResponse:
         """Check if a data box exists and get its status.
 
         Args:
@@ -62,9 +60,11 @@ class DataBoxSearchService(BaseService):
         Returns:
             Data box status information
         """
-        return self._call("CheckDataBox", dbID=data_box_id)
+        return CheckDataBoxResponse.model_validate(
+            self._call("CheckDataBox", dbID=data_box_id)
+        )
 
-    def get_data_box_list(self, **kwargs) -> Dict[str, Any]:
+    def get_data_box_list(self, **kwargs) -> GetDataBoxListResponse:
         """Get a list of data boxes based on criteria.
 
         Args:
@@ -73,9 +73,11 @@ class DataBoxSearchService(BaseService):
         Returns:
             List of data boxes
         """
-        return self._call("GetDataBoxList", **kwargs)
+        return GetDataBoxListResponse.model_validate(
+            self._call("GetDataBoxList", **kwargs)
+        )
 
-    def get_pdz_info(self, data_box_id: str) -> Dict[str, Any]:
+    def get_pdz_info(self, data_box_id: str) -> PDZInfoResponse:
         """Get PDZ (Postal Data Message) information for a data box.
 
         Args:
@@ -84,9 +86,9 @@ class DataBoxSearchService(BaseService):
         Returns:
             PDZ information
         """
-        return self._call("PDZInfo", dbID=data_box_id)
+        return PDZInfoResponse.model_validate(self._call("PDZInfo", dbID=data_box_id))
 
-    def get_credit_info(self, data_box_id: str) -> Dict[str, Any]:
+    def get_credit_info(self, data_box_id: str) -> CreditInfoResponse:
         """Get credit information for a data box.
 
         Args:
@@ -95,7 +97,9 @@ class DataBoxSearchService(BaseService):
         Returns:
             Credit information
         """
-        return self._call("DataBoxCreditInfo", dbID=data_box_id)
+        return CreditInfoResponse.model_validate(
+            self._call("DataBoxCreditInfo", dbID=data_box_id)
+        )
 
     def search_isds2(self, **kwargs) -> Dict[str, Any]:
         """Search ISDS with extended parameters (version 2).

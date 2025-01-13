@@ -6,6 +6,14 @@ from schemas.messages import (
     MessageStatus,
     VerifyMessageResponse,
 )
+from schemas.search import (
+    FindDataBoxResponse,
+    CheckDataBoxResponse,
+    GetDataBoxListResponse,
+    OwnerInfo,
+    PDZInfoResponse,
+    CreditInfoResponse,
+)
 from services import (
     MessageOperationsService,
     MessageInfoService,
@@ -140,21 +148,25 @@ class ISDSClient:
         return self._message_info.mark_message_as_downloaded(message_id)
 
     # Data Box Search methods
-    def find_data_box(self, search_text: str, **kwargs) -> Dict[str, Any]:
-        """Find a data box by search text."""
-        return self._data_box_search.find_data_box(search_text, **kwargs)
+    def find_data_box2(self, owner_info: OwnerInfo, **kwargs) -> FindDataBoxResponse:
+        """Find a data box by search parameters."""
+        return self._data_box_search.find_data_box2(dbOwnerInfo=owner_info, **kwargs)
 
-    def check_data_box(self, data_box_id: str) -> Dict[str, Any]:
+    def check_data_box(self, data_box_id: str) -> CheckDataBoxResponse:
         """Check if a data box exists and get its status."""
         return self._data_box_search.check_data_box(data_box_id)
 
-    def get_data_box_list(self, **kwargs) -> Dict[str, Any]:
+    def get_data_box_list(self, **kwargs) -> GetDataBoxListResponse:
         """Get a list of data boxes based on criteria."""
         return self._data_box_search.get_data_box_list(**kwargs)
 
-    def get_data_box_activity_status(self, data_box_id: str) -> Dict[str, Any]:
-        """Get activity status of a data box."""
-        return self._data_box_search.get_activity_status(data_box_id)
+    def get_pdz_info(self, data_box_id: str) -> PDZInfoResponse:
+        """Get PDZ information for a data box."""
+        return self._data_box_search.get_pdz_info(data_box_id)
+
+    def get_credit_info(self, data_box_id: str) -> CreditInfoResponse:
+        """Get credit information for a data box."""
+        return self._data_box_search.get_credit_info(data_box_id)
 
     # Data Box Access methods
     def get_owner_info(self) -> Dict[str, Any]:
