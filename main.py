@@ -1,5 +1,7 @@
 from datetime import datetime, timedelta
+import json
 import logging
+from pprint import pprint
 from isds_client import ISDSClient
 import os
 from dotenv import load_dotenv
@@ -38,8 +40,8 @@ def main():
     # )
     # print(result)
 
-    # result = client.download_message("11678994")
-    # print(result)
+    result = client.download_message("11683192")
+    logging.info(result)
 
     # result = client.get_owner_info()
     # print(result)
@@ -82,8 +84,8 @@ def main():
     # result = client.change_password("123456", "12345678")
     # print(result)
 
-    result = client.get_password_info()
-    print(result)
+    # result = client.get_password_info()
+    # print(result)
 
 
 if __name__ == "__main__":

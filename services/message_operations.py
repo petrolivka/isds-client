@@ -2,6 +2,7 @@ from pathlib import Path
 from typing import Dict, Any, List
 
 from schemas.base import DmFile
+from schemas.responses import DownloadMessageResponse
 from .base import BaseService
 
 
@@ -93,7 +94,7 @@ class MessageOperationsService(BaseService):
         }
         return self._call("CreateMultipleMessage", **params)
 
-    def download_message(self, message_id: str) -> Dict[str, Any]:
+    def download_message(self, message_id: str) -> DownloadMessageResponse:
         """Download a received message.
 
         Args:
@@ -102,7 +103,8 @@ class MessageOperationsService(BaseService):
         Returns:
             The complete message content
         """
-        return self._call("MessageDownload", dmID=message_id)
+        response = self._call("MessageDownload", dmID=message_id)
+        return DownloadMessageResponse.model_validate(response)
 
     def download_signed_message(self, message_id: str) -> Dict[str, Any]:
         """Download a signed received message.

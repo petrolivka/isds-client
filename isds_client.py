@@ -3,6 +3,7 @@ from typing import List, Optional, Dict, Any
 from datetime import datetime
 
 from schemas.base import DmFile
+from schemas.responses import DownloadMessageResponse
 from services import (
     MessageOperationsService,
     MessageInfoService,
@@ -83,7 +84,7 @@ class ISDSClient:
             recipient_id=recipient_id, subject=subject, files=files, **kwargs
         )
 
-    def download_message(self, message_id: str) -> Dict[str, Any]:
+    def download_message(self, message_id: str) -> DownloadMessageResponse:
         """Download a message."""
         return self._message_operations.download_message(message_id)
 
