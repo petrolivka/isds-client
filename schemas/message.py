@@ -60,8 +60,8 @@ class DmEnvelope(BaseModel):
 
 class DmMessage(BaseModel):
     dmDm: DmEnvelope
-    dmDeliveryTime: datetime = Field(..., description="Čas doručení")
-    dmAcceptanceTime: datetime = Field(..., description="Čas akceptace")
-    dmMessageStatus: int = Field(..., description="Status zprávy")
-    dmAttachmentSize: int = Field(..., description="Velikost příloh")
-    dmType: Optional[str] = Field(None, description="Typ zprávy")
+    dmDeliveryTime: datetime = Field(..., description="Delivery time")
+    dmAcceptanceTime: datetime = Field(..., description="Acceptance time")
+    dmMessageStatus: int = Field(..., description="Message status")
+    dmAttachmentSize: int = Field(..., description="Attachment size")
+    dmType: Optional[str] = Field(None, description="Message type")
